@@ -4,36 +4,47 @@ import cors from "cors";
 import dotenv from "dotenv";
 import connectDB from "./config/DB.js";
 
-dotenv.config()
+dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 5000;
 
+// Cors 
+
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://fusion-test-sigma.vercel.app'
+];
 
 const corsOptions = {
-  origin: process.env.FRONTEND_URL,
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type'],
   optionsSuccessStatus: 200
 };
 
-
 // Middleware
 app.use(cors(corsOptions));
 app.use(express.json());
 
-await connectDB()
+// Connect to DB
+await connectDB();
 
 // Routes
 app.use('/orders', OrderRouter);
 
-app.get('/',(req,res)=>{
-  res.send("Api is Working...")
-})
+// Test route
+app.get('/', (req, res) => {
+  res.send("API is working...");
+});
 
-// Server startup
+// Server start
 app.listen(port, () => {
-
   console.log(`Server is running on port http://localhost:${port}`);
-
 });
