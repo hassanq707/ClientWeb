@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #1a1a1a;
+  --secondary: #111827;
+  --accent: #2563eb;
+  --accent-light: #3b82f6;
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+}
+
+body {
+  @apply bg-gray-50 text-gray-900;
+  font-family: var(--font-inter);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-montserrat);
+}
+
+.debug * { border: 1px solid red !important; }
+
+
+/* For initial load animation */
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-left {
+  animation: slideInFromLeft 0.5s ease-out forwards;
+}
+
+.animate-right {
+  animation: slideInFromRight 0.5s ease-out forwards;
+}
