@@ -8,10 +8,10 @@ const PaymentModal = ({ show, onClose, vehicleType, price }) => {
   const [step, setStep] = useState('form');
   const [{data}, setData] = useState(JSON.parse(localStorage.getItem("orderData")) || {})
   const [customerInfo, setCustomerInfo] = useState({
-    fullname: data.fullname || '',
-    vinNumber: data.vinNumber || '',
-    vehicleModel: data.vehicleModel || '',
-    year: data.year || '',
+    fullname: data?.fullname || '',
+    vinNumber: data?.vinNumber || '',
+    vehicleModel: data?.vehicleModel || '',
+    year: data?.year || '',
     email: '',
     phoneNumber: ''
   });

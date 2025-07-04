@@ -223,7 +223,7 @@ const AboutPage = () => {
       >
         <motion.h1 
           variants={fadeUp}
-          className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6"
+          className="text-4xl sm:text-5xl  font-bold text-gray-900 mb-6"
         >
           {ABOUT_CONTENT.title}
         </motion.h1>
@@ -258,7 +258,7 @@ const AboutPage = () => {
             <motion.p 
               key={i}
               variants={fadeUp}
-              className="text-lg md:text-xl text-gray-700"
+              className="text-md md:text-lg text-gray-700"
             >
               {text}
             </motion.p>
@@ -288,7 +288,7 @@ const AboutPage = () => {
             <motion.p 
               key={i}
               variants={fadeUp}
-              className="text-lg md:text-xl text-gray-700"
+              className="text-md md:text-lg text-gray-700"
             >
               {text}
             </motion.p>

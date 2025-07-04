@@ -10,7 +10,7 @@ const ImageSlider = ({ images, currentSlide, setCurrentSlide }) => {
   }, [images.length, setCurrentSlide]);
 
   return (
-    <div className="absolute inset-0 -top-4">
+    <div className="absolute inset-0 -top-2">
       {images.map((image, index) => (
         <div key={image.id} className={`absolute inset-0 transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100' : 'opacity-0'}`}>
           <img src={image.src} alt={image.alt} className="w-full h-full object-cover" />

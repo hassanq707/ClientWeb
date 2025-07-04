@@ -50,7 +50,7 @@ const Trusted = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4"
+            className="text-3xl md:text-4xl  font-bold text-gray-900 mb-4"
           >
             Trusted Across Borders
           </motion.h2>
@@ -66,7 +66,7 @@ const Trusted = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
-            className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 max-w-3xl mx-auto"
+            className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto"
           >
             Providing verified vehicle reports in {countries.length} countries worldwide
           </motion.p>
@@ -88,8 +88,8 @@ const Trusted = () => {
               >
                 <div className="relative w-24 h-24 mb-4 rounded-full overflow-hidden shadow-lg border-2 border-white hover:border-blue-400 transition-all">
                   <img
-                    width={96}
-                    height={96}
+                    width={92}
+                    height={92}
                     src={country.image}
                     alt={country.name}
                     className="w-full h-full object-center object-cover "

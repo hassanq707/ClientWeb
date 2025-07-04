@@ -25,7 +25,7 @@ const OrderSlip = ({ vehicleType, price }) => {
 
   const handleDownload = () => {
     setIsDownloading(true);
-    
+
     const element = slipRef.current;
     const opt = {
       margin: 0.5,
@@ -49,7 +49,7 @@ const OrderSlip = ({ vehicleType, price }) => {
   };
 
   return (
-    <div className="flex flex-col h-[480px] md:h-[580px]" ref={slipRef}>
+    <div className="flex flex-col h-[480px] md:h-[500px]" ref={slipRef}>
       <div className="flex-grow overflow-y-auto pr-2">
         <div className="text-center mb-4">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-3">
@@ -68,10 +68,10 @@ const OrderSlip = ({ vehicleType, price }) => {
             </div>
           </div>
           <div className="p-4 space-y-3">
-            <div className="grid grid-cols-2 gap-24 text-sm">
-              <div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-sm">
+              <div className="min-w-0 break-words">
                 <p className="text-gray-500">Order #</p>
-                <p className="font-medium">{orderNumber || 'N/A'}</p>
+                <p className="font-medium break-all">{orderNumber || 'N/A'}</p>
               </div>
               <div>
                 <p className="text-gray-500">Date</p>
@@ -79,7 +79,7 @@ const OrderSlip = ({ vehicleType, price }) => {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-24 text-sm">
+            <div className="grid grid-cols-2 gap-12 text-sm">
               <div>
                 <p className="text-gray-500">Customer</p>
                 <p className="font-medium">{fullname || 'N/A'}</p>
@@ -97,17 +97,19 @@ const OrderSlip = ({ vehicleType, price }) => {
 
             <div className="pt-3 border-t border-gray-200">
               <h5 className="font-medium text-gray-900 text-sm mb-2">VEHICLE DETAILS</h5>
-              <div className="grid grid-cols-2 gap-24 text-sm">
-                <div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-sm">
+                <div className="min-w-0 break-words">
                   <p className="text-gray-500">VIN</p>
-                  <p className="font-medium">{vinNumber || 'N/A'}</p>
+                  <p className="font-medium break-all">{vinNumber || 'N/A'}</p>
                 </div>
                 <div>
                   <p className="text-gray-500">Model</p>
                   <p className="font-medium">{vehicleModel || 'N/A'}</p>
                 </div>
               </div>
-              <div className="grid grid-cols-2 gap-24 text-sm mt-2">
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-sm mt-2">
                 <div>
                   <p className="text-gray-500">Year</p>
                   <p className="font-medium">{year || 'N/A'}</p>
@@ -118,16 +120,16 @@ const OrderSlip = ({ vehicleType, price }) => {
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </div>
 
-      <button 
+      <button
         onClick={handleDownload}
         disabled={isDownloading}
-        className={`w-full flex items-center justify-center px-4 py-3 text-white font-medium rounded-lg transition-colors duration-200 mt-auto ${
-          isDownloading ? 'bg-blue-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'
-        }`}
+        className={`w-full flex items-center justify-center px-4 py-3 text-white font-medium rounded-lg transition-colors duration-200 mt-auto ${isDownloading ? 'bg-blue-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'
+          }`}
       >
         {isDownloading ? (
           <>

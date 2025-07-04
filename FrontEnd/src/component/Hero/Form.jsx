@@ -22,7 +22,7 @@ const FormSection = ({ formData, handleInputChange, handleSubmit }) => {
         
         {/* Content */}
         <div className="relative z-10">
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center justify-between mb-4">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-700 bg-clip-text bg-gradient-to-r from-blue-600 to-blue-700">
               Get Your Report
             </h2>
@@ -39,7 +39,7 @@ const FormSection = ({ formData, handleInputChange, handleSubmit }) => {
                   value={formData.fullname}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-2 md:py-3 border rounded-lg border-gray-300 bg-white/50 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"
+                  className="w-full px-4 py-2 border rounded-lg border-gray-300 bg-white/50 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"
                 />
               </div>
 
@@ -52,7 +52,7 @@ const FormSection = ({ formData, handleInputChange, handleSubmit }) => {
                   value={formData.vinNumber}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-2 md:py-3 border rounded-lg border-gray-300 bg-white/50 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"
+                  className="w-full px-4 py-2  border rounded-lg border-gray-300 bg-white/50 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"
                 />
               </div>
 
@@ -65,7 +65,7 @@ const FormSection = ({ formData, handleInputChange, handleSubmit }) => {
                   value={formData.vehicleModel}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-2 md:py-3 border rounded-lg border-gray-300 bg-white/50 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"
+                  className="w-full px-4 py-2  border rounded-lg border-gray-300 bg-white/50 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"
                 />
               </div>
 
@@ -78,7 +78,7 @@ const FormSection = ({ formData, handleInputChange, handleSubmit }) => {
                   value={formData.year}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-2 md:py-3 border rounded-lg border-gray-300 bg-white/50 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"
+                  className="w-full px-4 py-2  border rounded-lg border-gray-300 bg-white/50 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"
                 />
               </div>
 

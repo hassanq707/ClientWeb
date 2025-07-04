@@ -244,7 +244,7 @@ const Navbar = () => {
             >
               <Link to="/" className="flex items-center group">
                 <FaCar className="h-8 w-8 text-blue-600 transition-transform group-hover:scale-110" />
-                <span className="ml-3 text-2xl font-bold text-gray-900 tracking-tight">
+                <span className="ml-3 text-xl md:text-2xl font-bold text-gray-900 tracking-tight">
                   ASSEST<span className="text-blue-600">.</span>
                 </span>
               </Link>
@@ -260,7 +260,7 @@ const Navbar = () => {
                 <motion.div key={item.name} variants={itemVariants} custom={index}>
                   <Link
                     to={item.path}
-                    className={`relative text-base font-medium transition-colors ${path === item.path
+                    className={`relative text-md font-medium transition-colors ${path === item.path
                       ? 'text-blue-600'
                       : 'text-gray-700 hover:text-blue-500'
                       }`}
@@ -353,7 +353,7 @@ const Navbar = () => {
                   <Link
                     to={item.path}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`block px-6 py-4 text-lg ${path === item.path
+                    className={`block px-6 py-4 text-md ${path === item.path
                       ? 'text-blue-600 bg-blue-50'
                       : 'text-gray-700 hover:bg-gray-50'
                       }`}

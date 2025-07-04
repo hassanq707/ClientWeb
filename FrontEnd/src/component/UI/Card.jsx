@@ -40,15 +40,11 @@ const PackageCard = ({
       )}
       
       <motion.div
-        className={`h-full flex flex-col rounded-2xl overflow-hidden shadow-lg ${
-          isPopular 
-            ? 'border-2 border-blue-500 bg-gradient-to-b from-blue-50 to-white' 
-            : 'border border-gray-200 bg-white'
-        }`}
+        className={`h-full flex flex-col rounded-2xl overflow-hidden shadow-lg`}
         whileTap={{ scale: 0.98 }}
       >
         {/* Card Header */}
-        <div className={`p-6 ${
+        <div className={`p-4 ${
           isPopular ? 'bg-gradient-to-r from-blue-600 to-blue-500' : 'bg-blue-500'
         } text-white text-center`}>
           <motion.div 
@@ -64,7 +60,7 @@ const PackageCard = ({
         
         {/* Price Section */}
         <motion.div 
-          className="px-4 sm:px-6 pt-6 pb-4 text-center"
+          className="px-4 sm:px-6 pt-5 pb-4 text-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
@@ -82,7 +78,7 @@ const PackageCard = ({
         </motion.div>
         
         {/* Features List */}
-        <div className="px-4 sm:px-6 py-4 flex-grow">
+        <div className="px-4 sm:px-6 py-3 flex-grow">
           <ul className="space-y-3">
             {features.map((feature, index) => (
               <motion.li 
@@ -100,7 +96,7 @@ const PackageCard = ({
         </div>
         
         {/* CTA Button */}
-        <div className="px-4 sm:px-6 pb-6 pt-4">
+        <div className="px-4 sm:px-6 pb-6 pt-3">
           <motion.button
             onClick={onGetReport}
             className={`w-full py-3 px-4 rounded-lg font-bold text-white text-sm sm:text-base ${

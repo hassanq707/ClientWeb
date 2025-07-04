@@ -67,9 +67,9 @@ const HeroSection = () => {
         setCurrentSlide={setCurrentSlide}
       />
 
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center pt-7 pb-14 md:py-8">
-        <div className="w-full">
-          <div className="flex flex-col md:flex-row items-stretch gap-10 md:gap-12">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center pt-10 md:pt-4 pb-14 md:py-8">
+        <div className="w-full ">
+          <div className="flex  flex-col md:flex-row items-stretch gap-10 md:gap-12">
             {/* InfoSection  */}
             <div
               className={`w-full md:flex-1 order-1 md:order-1 ${showAnimation ? 'animate-left' : 'opacity-0'}`}
@@ -84,7 +84,7 @@ const HeroSection = () => {
 
             {/* FormSection */}
             <div
-              className={`w-full md:w-[380px] lg:w-[430px] xl:w-[460px] order-2 md:order-2 ${showAnimation ? 'animate-right' : 'opacity-0'}`}
+              className={`w-full md:w-[360px] lg:w-[410px] xl:w-[450px] order-2 md:order-2 ${showAnimation ? 'animate-right' : 'opacity-0'}`}
             >
               <div className="w-full h-full flex items-center">
                 <FormSection
