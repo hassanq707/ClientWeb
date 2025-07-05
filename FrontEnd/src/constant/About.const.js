@@ -48,37 +48,37 @@ export const HISTORY = [
 
 
 export const COUNTRIES = [
-    {
-      name: "Saudi Arabia",
-      description: "Providing comprehensive vehicle reports across all regions of Saudi Arabia with official ministry data.",
-      icon: "🇸🇦"
-    },
-    {
-      name: "United States",
-      description: "Nationwide coverage with detailed vehicle history reports from all 50 states.",
-      icon: "🇺🇸"
-    },
-    {
-      name: "Pakistan",
-      description: "Complete vehicle verification services with Pakistan's motor vehicle registry integration.",
-      icon: "🇵🇰"
-    },
-    {
-      name: "Oman",
-      description: "Official vehicle history reports with Oman Royal Police data integration.",
-      icon: "🇴🇲"
-    },
-    {
-      name: "India",
-      description: "Pan-India coverage with RTO verified vehicle information and history.",
-      icon: "🇮🇳"
-    },
-    {
-      name: "Bangladesh",
-      description: "Comprehensive BRTA-verified vehicle reports across all divisions.",
-      icon: "🇧🇩"
-    }
-  ];
+  {
+    name: "Saudi Arabia",
+    description: "Providing comprehensive vehicle reports across all regions of Saudi Arabia with official ministry data.",
+    icon: "🇸🇦"
+  },
+  {
+    name: "United States",
+    description: "Nationwide coverage with detailed vehicle history reports from all 50 states.",
+    icon: "🇺🇸"
+  },
+  {
+    name: "Germany",
+    description: "Accurate vehicle history reports backed by German motor vehicle authority data.",
+    icon: "🇩🇪"
+  },
+  {
+    name: "Oman",
+    description: "Official vehicle history reports with Oman Royal Police data integration.",
+    icon: "🇴🇲"
+  },
+  {
+    name: "Japan",
+    description: "Trusted Japanese vehicle records with auction sheet and export verification.",
+    icon: "🇯🇵"
+  },
+  {
+    name: "Australia",
+    description: "Reliable vehicle information using data from Australia’s PPSR and transport departments.",
+    icon: "🇦🇺"
+  }
+];
   
   export const FAQS = [
     {

@@ -1,6 +1,6 @@
 export const footerData = {
     logo: '/logo.png', 
-    description: 'Get comprehensive Asset Central Report for cars, bikes, trucks, and boats. Know your vehicle inside out.',
+    description: 'Get comprehensive Central Report for cars, bikes, trucks, and boats. Know your vehicle inside out.',
     links: [
       {
         title: 'Quick Links',

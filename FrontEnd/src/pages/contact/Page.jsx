@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import {FaPaperPlane,FaMapMarkerAlt,FaPhone,FaEnvelope,FaClock,FaCheckCircle,FaTimesCircle,FaHeadset,FaShieldAlt,FaUser,FaMobileAlt,FaBolt,FaFileAlt} from 'react-icons/fa';
 import { motion } from 'framer-motion';
-import contactImage from '/contact.jpg';
-import Card1 from '/Card1.jpg';
-import Card2 from '/Card2.jpg';
-import Card3 from '/Card3.jpg';
+import contactImage from '/contact.webp'
+import Card1 from '/Card1.webp'
+import Card2 from '/Card2.webp'
+import Card3 from '/Card3.jpg'
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -18,7 +18,7 @@ const ContactPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
   const [currentImage, setCurrentImage] = useState(0);
-  setCurrentImage
+  
   const contactImages = [
     { text: "We're here to help with any questions", subtext: "Our team responds within 24 hours" },
     { text: "Get in touch for support", subtext: "Available 6 days a week" },
@@ -210,49 +210,49 @@ const ContactPage = () => {
         </div>
       </div>
 
-      {/* Main Content */}
+      {/* Main Content  */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Contact Form */}
-          <div className="lg:col-span-2">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+
+          <div className="lg:col-span-3">
             <div
               className="bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden"
             >
-              <div className="bg-gradient-to-r from-blue-600 to-blue-800 px-8 py-6">
-                <h2 className="text-2xl font-bold text-white flex items-center">
+              <div className="bg-gradient-to-r from-blue-600 to-blue-800 px-6 py-4">
+                <h2 className="text-xl font-bold text-white flex items-center">
                   <FaPaperPlane className="mr-3 animate-bounce" />
                   Send Us a Message
                 </h2>
                 <p className="text-blue-100 mt-2">We'll get back to you as soon as possible</p>
               </div>
 
-              <div className="p-8">
+              <div className="p-6">
                 {submitStatus === 'success' && (
                   <div
-                    className="mb-6 p-4 bg-green-50 border border-green-200 text-green-700 rounded-xl flex items-center"
+                    className="mb-4 p-3 bg-green-50 border border-green-200 text-green-700 rounded-xl flex items-center"
                   >
-                    <FaCheckCircle className="mr-3 text-green-600 text-xl" />
-                    <span className="font-medium">Thank you! Your message has been sent successfully.</span>
+                    <FaCheckCircle className="mr-2 text-green-600" />
+                    <span className="font-medium text-sm">Message sent successfully!</span>
                   </div>
                 )}
                 {submitStatus === 'error' && (
                   <div
-                    className="mb-6 p-4 bg-red-50 border border-red-200 text-red-700 rounded-xl flex items-center"
+                    className="mb-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-xl flex items-center"
                   >
-                    <FaTimesCircle className="mr-3 text-red-600 text-xl" />
-                    <span className="font-medium">Oops! Something went wrong. Please try again later.</span>
+                    <FaTimesCircle className="mr-2 text-red-600" />
+                    <span className="font-medium text-sm">Something went wrong. Please try again.</span>
                   </div>
                 )}
 
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="group">
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label className="block text-sm font-semibold text-gray-700 mb-1">
                         Full Name *
                       </label>
                       <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                          <FaUser className="text-gray-400" />
+                          <FaUser className="text-gray-400 text-sm" />
                         </div>
                         <input
                           type="text"
@@ -260,18 +260,18 @@ const ContactPage = () => {
                           value={formData.name}
                           onChange={handleChange}
                           required
-                          className="w-full pl-10 px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 group-hover:border-blue-400"
+                          className="w-full pl-10 px-3 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 text-sm"
                           placeholder="Your name"
                         />
                       </div>
                     </div>
                     <div className="group">
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label className="block text-sm font-semibold text-gray-700 mb-1">
                         Email Address *
                       </label>
                       <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                          <FaEnvelope className="text-gray-400" />
+                          <FaEnvelope className="text-gray-400 text-sm" />
                         </div>
                         <input
                           type="email"
@@ -279,34 +279,34 @@ const ContactPage = () => {
                           value={formData.email}
                           onChange={handleChange}
                           required
-                          className="w-full pl-10 px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 group-hover:border-blue-400"
+                          className="w-full pl-10 px-3 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 text-sm"
                           placeholder="your.email@example.com"
                         />
                       </div>
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="group">
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label className="block text-sm font-semibold text-gray-700 mb-1">
                         Phone Number
                       </label>
                       <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                          <FaMobileAlt className="text-gray-400" />
+                          <FaMobileAlt className="text-gray-400 text-sm" />
                         </div>
                         <input
                           type="tel"
                           name="phone"
                           value={formData.phone}
                           onChange={handleChange}
-                          className="w-full pl-10 px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 group-hover:border-blue-400"
+                          className="w-full pl-10 px-3 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 text-sm"
                           placeholder="+92 XXX XXXXXXX"
                         />
                       </div>
                     </div>
                     <div className="group">
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label className="block text-sm font-semibold text-gray-700 mb-1">
                         Subject *
                       </label>
                       <input
@@ -315,23 +315,23 @@ const ContactPage = () => {
                         value={formData.subject}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 group-hover:border-blue-400"
+                        className="w-full px-3 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 text-sm"
                         placeholder="What's this about?"
                       />
                     </div>
                   </div>
 
                   <div className="group">
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-gray-700 mb-1">
                       Your Message *
                     </label>
                     <textarea
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
-                      rows="5"
+                      rows="4"
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 group-hover:border-blue-400 resize-none"
+                      className="w-full px-3 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 resize-none text-sm"
                       placeholder="How can we help you?"
                     />
                   </div>
@@ -339,12 +339,12 @@ const ContactPage = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                    className="w-full bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center text-sm"
                   >
                     {isSubmitting ? (
                       <>
-                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                        Sending Message...
+                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                        Sending...
                       </>
                     ) : (
                       <>
@@ -358,14 +358,15 @@ const ContactPage = () => {
             </div>
           </div>
 
-          {/* Contact Information */}
-          <div className="space-y-6">
+          {/* Contact Information*/}
+          <div className="lg:col-span-2 space-y-6">
             
             <div
               className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden"
             >
               <div className="bg-gradient-to-r from-blue-600 to-blue-800 px-6 py-4">
-                <h3 className="text-xl font-bold text-white">Contact Information</h3>
+                <h3 className="text-2xl font-bold text-white">Contact Information</h3>
+                <p className="text-blue-100 text-sm mt-2">Available 24/7 for your queries and support.</p>
               </div>
               <div className="p-6 space-y-4">
                 <div
@@ -376,8 +377,8 @@ const ContactPage = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-900">Phone</h4>
-                    <p className="text-blue-600 font-medium">+92 311 2512821</p>
-                    <p className="text-sm text-gray-500">Primary contact number</p>
+                    <p className="text-blue-600 font-medium">+44 7516 177479</p>
+                    <p className="text-sm text-gray-500">Primary contact number </p>
                   </div>
                 </div>
 
@@ -393,55 +394,9 @@ const ContactPage = () => {
                     <p className="text-sm text-gray-500">For general inquiries</p>
                   </div>
                 </div>
-
-                <div
-                  className="flex items-center group hover:bg-blue-50 p-3 rounded-xl transition-colors"
-                >
-                  <div className="bg-blue-100 p-3 rounded-full mr-4 group-hover:bg-blue-200 transition-colors">
-                    <FaMapMarkerAlt className="text-blue-600 text-lg" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900">Office Address</h4>
-                    <p className="text-gray-600">123 Business Ave, Suite 456</p>
-                    <p className="text-gray-600">Karachi, Pakistan</p>
-                    <p className="text-sm text-gray-500">Open by appointment</p>
-                  </div>
-                </div>
               </div>
             </div>
 
-
-            {/* Support Hours Card */}
-            <div
-              className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden"
-            >
-              <div className="bg-gradient-to-r from-blue-600 to-blue-800 px-6 py-4">
-                <h3 className="text-xl font-bold text-white">Working Hours</h3>
-              </div>
-              <div className="p-6 space-y-4">
-                <div className="flex items-center justify-between p-3 bg-blue-50 rounded-xl">
-                  <div className="flex items-center">
-                    <FaClock className="text-blue-600 mr-3" />
-                    <span className="font-medium text-gray-700">Monday - Friday</span>
-                  </div>
-                  <span className="text-gray-600">9:00 AM – 6:00 PM</span>
-                </div>
-                <div className="flex items-center justify-between p-3 bg-blue-50 rounded-xl">
-                  <div className="flex items-center">
-                    <FaClock className="text-blue-600 mr-3" />
-                    <span className="font-medium text-gray-700">Saturday</span>
-                  </div>
-                  <span className="text-gray-600">10:00 AM – 4:00 PM</span>
-                </div>
-                <div className="flex items-center justify-between p-3 bg-blue-50 rounded-xl">
-                  <div className="flex items-center">
-                    <FaClock className="text-blue-600 mr-3" />
-                    <span className="font-medium text-gray-700">Sunday</span>
-                  </div>
-                  <span className="text-gray-600">Closed</span>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -451,6 +406,3 @@ const ContactPage = () => {
 };
 
 export default ContactPage;
-
-
-

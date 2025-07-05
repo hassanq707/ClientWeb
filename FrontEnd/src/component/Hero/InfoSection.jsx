@@ -19,7 +19,7 @@ const InfoSection = ({ currentTypeIndex, currentText }) => {
       <div className="flex items-center mb-6">
         {getVehicleIcon()}
         <h1 className="text-4xl md:text-5xl lg:text-5xl font-bold ml-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-300">
-          <span className="text-white">Assist <span className='text-blue-400'>Central</span> Report</span>
+          <span className="text-white">Fusions <span className='text-blue-400'>Car</span></span>
         </h1>
       </div>
       <p className="text-xl md:text-2xl mb-8">

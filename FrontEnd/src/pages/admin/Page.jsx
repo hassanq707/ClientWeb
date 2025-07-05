@@ -66,7 +66,7 @@ const AdminDashboard = () => {
                   <span className="bg-gradient-to-r from-blue-600 to-blue-400 text-white p-2 rounded-lg mr-3">
                     <IoIosStats className="text-xl" />
                   </span>
-                  Fusion Report Dashboard
+                  Fusions Car Report Dashboard
                 </h1>
                 <p className="text-gray-600 mt-2 text-sm sm:text-base">
                   Manage all vehicle history reports and customer data

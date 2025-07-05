@@ -1,8 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 import { footerData } from '../constant/Footer.const';
+
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
-import { MdEmail, MdPhone, MdLocationOn } from 'react-icons/md';
+import { MdEmail} from 'react-icons/md';
 import { Link } from 'react-router-dom';
+
 import { motion, useAnimation, useInView } from 'framer-motion';
 
 const Footer = () => {
@@ -86,18 +88,17 @@ const Footer = () => {
         >
           {/* Logo and Description */}
           <motion.div
-            className="space-y-4"
             variants={columnVariants}
           >
             <motion.div
-              className="flex items-center gap-4"
+              className="flex -mt-5 items-center gap-4"
               variants={itemVariants}
             >
               <motion.img
                 src={footerData.logo}
                 width={80}
                 height={80}
-                alt="Asset Central Report Logo"
+                alt="Fusions Car Logo"
                 className="h-16 w-auto object-contain"
                 variants={itemVariants}
               />
@@ -105,12 +106,12 @@ const Footer = () => {
                 className="text-2xl font-bold text-gray-900"
                 variants={itemVariants}
               >
-                Asset Central
-                <span className="text-blue-600"> Reports</span>
+                Fusions
+                <span className="text-blue-600"> Car</span>
               </motion.h2>
             </motion.div>
             <motion.p
-              className="text-gray-600 text-sm leading-relaxed"
+              className="text-gray-600 text-sm mb-4 leading-relaxed"
               variants={itemVariants}
             >
               {footerData.description}
@@ -234,7 +235,7 @@ const Footer = () => {
           variants={itemVariants}
           transition={{ delay: 0.3 }}
         >
-          <p>&copy; {new Date().getFullYear()} Asset Central Report. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Fusions Car. All rights reserved.</p>
         </motion.div>
       </div>
     </motion.footer>
