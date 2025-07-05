@@ -1,163 +1,3 @@
-// import React from 'react'
-// import { useState, useEffect } from 'react';
-// import { Link, useLocation } from 'react-router-dom';
-// import { FiHome, FiInfo, FiPackage, FiMail } from 'react-icons/fi';
-// import { FaCar } from 'react-icons/fa';
-
-// const Navbar = () => {
-//   const [scrolled, setScrolled] = useState(false);
-//   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-//   const location = useLocation();
-//   const path = location.pathname;
-
-//   const navItems = [
-//     { name: 'Home', path: '/', icon: <FiHome /> },
-//     { name: 'About', path: '/about', icon: <FiInfo /> },
-//     { name: 'Packages', path: '/package', icon: <FiPackage /> },
-//     { name: 'Contact', path: '/contact', icon: <FiMail /> },
-//   ];
-
-//   useEffect(() => {
-//     const handleScroll = () => setScrolled(window.scrollY > 10);
-//     window.addEventListener('scroll', handleScroll);
-//     return () => window.removeEventListener('scroll', handleScroll);
-//   }, []);
-
-//   return (
-//     <>
-//       {/* Desktop Navigation */}
-//       <nav
-//         className={`hidden md:block fixed w-full z-50 transition-all duration-300 ${scrolled
-//             ? 'bg-white shadow-lg border-b border-gray-100 py-2'
-//             : 'bg-white/90 backdrop-blur-md py-2'
-//           }`}
-//       >
-//         <div className="max-w-7xl mx-auto px-6">
-//           <div className="flex items-center justify-between h-14">
-//             <Link
-//               to="/"
-//               className="flex items-center group"
-//             >
-//               <FaCar className="h-8 w-8 text-blue-600 transition-transform group-hover:scale-110" />
-//               <span className="ml-3 text-2xl font-bold text-gray-900 tracking-tight">
-//                 ASSEST
-//                 <span className="text-blue-600">.</span>
-//               </span>
-//             </Link>
-
-//             <div className="flex items-center space-x-8">
-//               {navItems.map((item) => (
-//                 <Link
-//                   key={item.name}
-//                   to={item.path}
-//                   className={`relative text-base font-medium transition-colors ${path === item.path
-//                       ? 'text-blue-600'
-//                       : 'text-gray-700 hover:text-blue-500'
-//                     }`}
-//                 >
-//                   {item.name}
-//                   <span
-//                     className={`absolute -bottom-1 left-1/2 h-[3px] bg-blue-600 rounded-full transition-transform duration-300 ease-out ${path === item.path
-//                         ? 'w-full scale-x-100 -translate-x-1/2 origin-center'
-//                         : 'w-0 scale-x-0'
-//                       }`}
-//                   ></span>
-//                 </Link>
-//               ))}
-//             </div>
-
-//           </div>
-//         </div>
-//       </nav>
-
-//       {/* Mobile Navigation */}
-//       <div className="md:hidden fixed w-full z-50 top-0">
-//         <div className={`flex items-center justify-between px-4 h-16 transition-all ${scrolled ? 'bg-white shadow-sm' : 'bg-white/90 backdrop-blur-sm'
-//           }`}>
-//           <Link to="/" className="flex items-center">
-//             <FaCar className="h-7 w-7 text-blue-600" />
-//             <span className="ml-2 text-xl font-bold text-gray-900">ASSEST</span>
-//           </Link>
-
-//           <button
-//             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-//             className="p-2 rounded-md text-gray-700 focus:outline-none"
-//           >
-//             <svg
-//               className="h-6 w-6"
-//               fill="none"
-//               viewBox="0 0 24 24"
-//               stroke="currentColor"
-//             >
-//               {mobileMenuOpen ? (
-//                 <path
-//                   strokeLinecap="round"
-//                   strokeLinejoin="round"
-//                   strokeWidth={2}
-//                   d="M6 18L18 6M6 6l12 12"
-//                 />
-//               ) : (
-//                 <path
-//                   strokeLinecap="round"
-//                   strokeLinejoin="round"
-//                   strokeWidth={2}
-//                   d="M4 6h16M4 12h16M4 18h16"
-//                 />
-//               )}
-//             </svg>
-//           </button>
-//         </div>
-
-//         {/* Mobile Menu Dropdown */}
-//         {mobileMenuOpen && (
-//           <div className="bg-white shadow-lg border-t border-gray-100">
-//             {navItems.map((item) => (
-//               <Link
-//                 key={item.name}
-//                 to={item.path}
-//                 onClick={() => setMobileMenuOpen(false)}
-//                 className={`block px-6 py-4 text-lg ${path === item.path
-//                     ? 'text-blue-600 bg-blue-50'
-//                     : 'text-gray-700 hover:bg-gray-50'
-//                   }`}
-//               >
-//                 {item.name}
-//               </Link>
-//             ))}
-//           </div>
-//         )}
-//       </div>
-
-//       {/* Bottom Navigation for Mobile */}
-//       <div className={`md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-40 shadow-lg ${mobileMenuOpen ? 'hidden' : 'block'
-//         }`}>
-//         <div className="flex justify-around">
-//           {navItems.map((item) => (
-//             <Link
-//               key={item.name}
-//               to={item.path}
-//               className={`flex flex-col items-center justify-center py-3 px-2 w-full ${path === item.path ? 'text-blue-600' : 'text-gray-500'
-//                 }`}
-//             >
-//               <div className="text-xl mb-1">
-//                 {React.cloneElement(item.icon, {
-//                   className: `text-${path === item.path ? 'blue-600' : 'gray-500'}`
-//                 })}
-//               </div>
-//               <span className="text-xs">{item.name}</span>
-//               {path === item.path && (
-//                 <div className="w-1/2 h-1 bg-blue-600 rounded-t-full mt-1"></div>
-//               )}
-//             </Link>
-//           ))}
-//         </div>
-//       </div>
-//     </>
-//   );
-// };
-
-// export default Navbar;
-
 import React from 'react'
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
@@ -243,9 +83,9 @@ const Navbar = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               <Link to="/" className="flex items-center group">
-                <FaCar className="h-8 w-8 text-blue-600 transition-transform group-hover:scale-110" />
-                <span className="ml-3 text-xl md:text-2xl font-bold text-gray-900 tracking-tight">
-                  ASSEST<span className="text-blue-600">.</span>
+                <img src="/logo.png"className="h-16 w-16 text-blue-600 transition-transform group-hover:scale-110" />
+                <span className="ml-1 text-xl md:text-2xl font-bold text-gray-800 tracking-tight">
+                  Fusions Car<span className="text-blue-600"></span>
                 </span>
               </Link>
             </motion.div>
@@ -294,8 +134,10 @@ const Navbar = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <Link to="/" className="flex items-center">
-              <FaCar className="h-7 w-7 text-blue-600" />
-              <span className="ml-2 text-xl font-bold text-gray-900">ASSEST</span>
+              <img src="/logo.png"className="h-16 w-16 text-blue-600 transition-transform group-hover:scale-110" />
+                <span className="ml-1 text-xl md:text-2xl font-bold text-gray-900 tracking-tight">
+                  Fusions Car<span className="text-blue-600"></span>
+                </span>
             </Link>
           </motion.div>
 

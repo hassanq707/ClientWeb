@@ -1,4 +1,3 @@
-// File : src/app/components/ui/InputField.js
 const InputField = ({ label, id, name, type = 'text', value, onChange, required = true }) => {
     return (
       <div>
@@ -11,7 +10,7 @@ const InputField = ({ label, id, name, type = 'text', value, onChange, required 
           name={name}
           value={value}
           onChange={onChange}
-          className="w-full px-4 py-2 text-lg border border-gray-300 rounded-md focus:ring-2 focus:ring-red-500 focus:border-red-500"
+          className="w-full px-4 py-2 text-md border border-gray-300 rounded-md focus:ring-2 focus:ring-red-500 focus:border-red-500"
           required={required}
         />
       </div>

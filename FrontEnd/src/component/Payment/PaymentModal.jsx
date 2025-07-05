@@ -1,6 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import CustomerForm from './CustomerForm';
-import PaymentStep from './PaymentStep';
 import OrderSlip from './OrderSlip';
 import { useNavigate } from 'react-router-dom';
 
@@ -12,57 +11,71 @@ const PaymentModal = ({ show, onClose, vehicleType, price }) => {
     vinNumber: data?.vinNumber || '',
     vehicleModel: data?.vehicleModel || '',
     year: data?.year || '',
-    email: '',
-    phoneNumber: ''
+    email: data?.email || '',
+    phoneNumber: data?.phoneNumber || ''
   });
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (show) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [show]);
+
+  const handleClose = () => {
+    if (step !== "form") {
+      setStep("form");
+      navigate('/');
+    }
+    onClose();
+  };
 
   if (!show) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-lg shadow-xl max-w-md w-full p-6">
-        <div className="flex justify-between items-center mb-4">
-          <h3 className="text-2xl font-bold">
-            {step === 'form'
-              ? `Get Your ${vehicleType} Report`
-              : `Your Order Slip`}
+    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+      <div className="bg-white rounded-xl shadow-2xl max-w-md w-full p-6 mx-4 overflow-hidden">
+        <div className="flex justify-between items-center mb-6">
+          <h3 className="text-2xl font-bold text-gray-800">
+            {step === 'form' 
+              ? `Get Your ${vehicleType} Report` 
+              : 'Order Confirmation'}
           </h3>
-          <button onClick={() => {
-            if (step !== "form") {
-              setStep("form");     
-              onClose();           
-              navigate('/');  
-            } else {
-              onClose();           
-            }
-          }}
-            className="text-gray-500 hover:text-gray-700 text-4xl -mt-2 leading-none">
+          <button 
+            onClick={handleClose}
+            className="text-gray-500 hover:text-gray-700 text-3xl transition-colors"
+            aria-label="Close modal"
+          >
             &times;
           </button>
         </div>
 
-        {step === 'form' ? (
-          <CustomerForm
-            customerInfo={customerInfo}
-            setCustomerInfo={setCustomerInfo}
-            setStep={setStep}
-            vehicleType={vehicleType}
-          />
-        ) : (
-          <OrderSlip
-            vehicleType={vehicleType}
-            price={price}
-          />
-         )}
+        <div className="transition-all duration-300">
+          {step === 'form' ? (
+            <CustomerForm
+              customerInfo={customerInfo}
+              setCustomerInfo={setCustomerInfo}
+              setStep={setStep}
+              vehicleType={vehicleType}
+              price={price}
+            />
+          ) : (
+            <OrderSlip
+              vehicleType={vehicleType}
+              price={price}
+              customerInfo={customerInfo}
+            />
+          )}
+        </div>
       </div>
     </div>
   );
 };
 
-export default PaymentModal;
-
-
-
-
+export default PaymentModal;  

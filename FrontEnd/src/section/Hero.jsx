@@ -14,16 +14,16 @@ const HeroSection = () => {
     fullname: '',
     vinNumber: '',
     vehicleModel: '',
-    year: ''
+    year: '',
+    email: '',
+    phone: ''
   });
 
   useEffect(() => {
     setShowAnimation(false);
-
     const timer = setTimeout(() => {
       setShowAnimation(true);
     }, 70);
-
     return () => clearTimeout(timer);
   }, []);
 
@@ -48,7 +48,7 @@ const HeroSection = () => {
           "orderData",
           JSON.stringify({
             data: data.order,
-            expiresAt: Date.now() + 10 * 60 * 1000 // 10 minutes in ms
+            expiresAt: Date.now() + 10 * 60 * 1000 // expires in 10 minutes 
           })
         );
       } else {
@@ -60,20 +60,21 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative bg-gray-50 min-h-screen">
+    <section className="relative  -mt-4 md:-mt-2 min-h-screen overflow-hidden">
+
+      <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-gray-900/30 z-0"></div>
+      
       <ImageSlider
         images={images}
         currentSlide={currentSlide}
         setCurrentSlide={setCurrentSlide}
       />
 
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center pt-10 md:pt-4 pb-14 md:py-8">
-        <div className="w-full ">
-          <div className="flex  flex-col md:flex-row items-stretch gap-10 md:gap-12">
-            {/* InfoSection  */}
-            <div
-              className={`w-full md:flex-1 order-1 md:order-1 ${showAnimation ? 'animate-left' : 'opacity-0'}`}
-            >
+      <div className="relative z-10  container mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center pt-10 md:pt-4 pb-14 md:py-8">
+        <div className="w-full pt-8">
+          <div className="flex flex-col lg:flex-row items-stretch gap-8 md:gap-12">
+            {/* InfoSection */}
+            <div className={`w-full lg:flex-1 order-1 ${showAnimation ? 'animate-left' : 'opacity-0'}`}>
               <div className="w-full h-full flex items-center">
                 <InfoSection
                   currentTypeIndex={currentSlide}
@@ -83,9 +84,7 @@ const HeroSection = () => {
             </div>
 
             {/* FormSection */}
-            <div
-              className={`w-full md:w-[360px] lg:w-[410px] xl:w-[450px] order-2 md:order-2 ${showAnimation ? 'animate-right' : 'opacity-0'}`}
-            >
+            <div className={`w-full lg:w-[450px] xl:w-[500px] order-2 ${showAnimation ? 'animate-right' : 'opacity-0'}`}>
               <div className="w-full h-full flex items-center">
                 <FormSection
                   formData={formData}

@@ -1,4 +1,3 @@
-// constants/footerData.js
 export const footerData = {
     logo: '/logo.png', 
     description: 'Get comprehensive Asset Central Report for cars, bikes, trucks, and boats. Know your vehicle inside out.',
@@ -15,17 +14,16 @@ export const footerData = {
       {
         title: 'Our Services',
         items: [
-          { name: 'Car Reports', href: '/services/car' },
-          { name: 'Bike Reports', href: '/services/bike' },
-          { name: 'Truck Reports', href: '/services/truck' },
-          { name: 'Ship Reports', href: '/services/ship' },
+          { name: 'Car History Report', href: '/services/car' },
+          { name: 'Bike History Report', href: '/services/bike' },
+          { name: 'Truck History Report', href: '/services/truck' },
+          { name: 'Ship History Report', href: '/services/ship' },
         ],
       },
     ],
     contact: {
-      address: '123 Vehicle Lane, Auto City, 10001',
-      phone: '+92 (311) 2512821',
-      email: 'support@vehiclehistory.com',
+      data: "Have questions or need assistance with our Vehical History reports? We're here to help ",
+      email: 'info.fusionscar@gmail.com',
     },
     social: [
       { name: 'Facebook', href: '#', icon: '/social/facebook.png' },

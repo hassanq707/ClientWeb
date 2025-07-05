@@ -1,4 +1,3 @@
-// constants/data.js
 export const ABOUT_CONTENT = {
     title: "Empowering consumers with comprehensive vehicle history information since 2008",
     description: "At Fusionscar, we're dedicated to making the used vehicle market transparent and safer for everyone.",
