@@ -1,6 +1,6 @@
 export const footerData = {
     logo: '/logo.png', 
-    description: 'Get comprehensive Central Report for cars, bikes, trucks, and boats. Know your vehicle inside out.',
+  description: 'Fusions Car provides trusted vehicle history reports for cars, bikes, trucks, and boats, helping you make smarter buying decisions.',
     links: [
       {
         title: 'Quick Links',

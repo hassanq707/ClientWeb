@@ -91,7 +91,7 @@ const Footer = () => {
             variants={columnVariants}
           >
             <motion.div
-              className="flex -mt-5 items-center gap-4"
+              className="flex -mt-5 items-center gap-2"
               variants={itemVariants}
             >
               <motion.img
