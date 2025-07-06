@@ -1,6 +1,6 @@
 export const footerData = {
     logo: '/logo.png', 
-  description: 'Fusions Car provides trusted vehicle history reports for cars, bikes, trucks, and boats, helping you make smarter buying decisions.',
+    description: 'Fusions Car provides trusted vehicle history reports for cars, bikes, trucks, and boats, helping you make smarter buying decisions.',
     links: [
       {
         title: 'Quick Links',
