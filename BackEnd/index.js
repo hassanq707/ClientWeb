@@ -14,9 +14,10 @@ const port = process.env.PORT || 5000;
 const allowedOrigins = [
   'http://localhost:5173',
   'https://fusion-test-sigma.vercel.app',
-  'https://fusionscar.com'
-
+  'http://fusionscar.com',
+  'https://fusionscar.com' 
 ];
+
 
 const corsOptions = {
   origin: function (origin, callback) {
