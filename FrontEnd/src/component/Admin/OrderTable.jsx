@@ -9,23 +9,21 @@ const OrderTable = ({ orders = [] }) => {
 
     const dateObj = new Date(dateTimeString);
 
-    const date = dateObj.toLocaleDateString('en-GB', {
+    const date = dateObj.toLocaleDateString(undefined, {
       day: '2-digit',
       month: '2-digit',
-      year: 'numeric'
+      year: 'numeric',
     });
 
-    const time = dateObj.toLocaleTimeString('en-US', {
+    const time = dateObj.toLocaleTimeString(undefined, {
       hour: '2-digit',
       minute: '2-digit',
-      hour12: true
+      hour12: true,
     });
 
-    return {
-      date,
-      time
-    };
+    return { date, time };
   };
+
 
   const copyToClipboard = (text, id) => {
     navigator.clipboard.writeText(text);
