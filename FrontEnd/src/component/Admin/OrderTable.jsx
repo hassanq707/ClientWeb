@@ -7,24 +7,26 @@ const OrderTable = ({ orders = [] }) => {
   const formatDateTime = (dateTimeString) => {
     if (!dateTimeString) return { date: 'N/A', time: '' };
 
-    const dateObj = new Date(dateTimeString);
-
-    const date = dateObj.toLocaleDateString("en-GB", {
-      timeZone: "Asia/Karachi",
+    const optionsDate = {
+      timeZone: 'Asia/Karachi',
       day: '2-digit',
       month: '2-digit',
-      year: 'numeric',
-    });
+      year: 'numeric'
+    };
 
-    const time = dateObj.toLocaleTimeString("en-US", {
-      timeZone: "Asia/Karachi",
+    const optionsTime = {
+      timeZone: 'Asia/Karachi',
       hour: '2-digit',
       minute: '2-digit',
-      hour12: true,
-    });
+      hour12: true
+    };
+
+    const date = new Intl.DateTimeFormat('en-GB', optionsDate).format(new Date(dateTimeString));
+    const time = new Intl.DateTimeFormat('en-US', optionsTime).format(new Date(dateTimeString));
 
     return { date, time };
   };
+
 
   const copyToClipboard = (text, id) => {
     navigator.clipboard.writeText(text);
