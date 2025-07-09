@@ -49,8 +49,8 @@ const OrderSlip = ({ vehicleType, price }) => {
   };
 
   return (
-    <div className="flex flex-col h-[480px] md:h-[500px]" ref={slipRef}>
-      <div className="flex-grow overflow-y-auto pr-2">
+    <div className="flex flex-col h-[480px] md:h-[500px]">
+      <div className="flex-grow overflow-y-auto pr-2" ref={slipRef}>
         <div className="text-center mb-4">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-3">
             <FaCheckCircle className="w-8 h-8 text-green-600" />

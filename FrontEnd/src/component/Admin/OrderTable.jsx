@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import {User, Mail, Phone, Hash,Truck, Calendar, Copy, Check, Clock} from 'lucide-react';
+import { User, Mail, Phone, Hash, Truck, Calendar, Copy, Check, Clock } from 'lucide-react';
 
 const OrderTable = ({ orders = [] }) => {
   const [copiedId, setCopiedId] = useState(null);
@@ -9,13 +9,15 @@ const OrderTable = ({ orders = [] }) => {
 
     const dateObj = new Date(dateTimeString);
 
-    const date = dateObj.toLocaleDateString(undefined, {
+    const date = dateObj.toLocaleDateString("en-GB", {
+      timeZone: "Asia/Karachi",
       day: '2-digit',
       month: '2-digit',
       year: 'numeric',
     });
 
-    const time = dateObj.toLocaleTimeString(undefined, {
+    const time = dateObj.toLocaleTimeString("en-US", {
+      timeZone: "Asia/Karachi",
       hour: '2-digit',
       minute: '2-digit',
       hour12: true,
@@ -24,7 +26,6 @@ const OrderTable = ({ orders = [] }) => {
     return { date, time };
   };
 
-
   const copyToClipboard = (text, id) => {
     navigator.clipboard.writeText(text);
     setCopiedId(id);
@@ -32,41 +33,19 @@ const OrderTable = ({ orders = [] }) => {
   };
 
   const formatValue = (value, type = 'text') => {
-    if (!value || value === '' || value === null || value === undefined) {
-      return (
-        <span className="text-gray-400 font-medium">
-          —
-        </span>
-      );
+    if (!value) {
+      return <span className="text-gray-400 font-medium">—</span>;
     }
-    
+
     if (type === 'email') {
-      return (
-        <a
-          href={`mailto:${value}`}
-          className="text-blue-600 hover:underline truncate max-w-[180px]"
-        >
-          {value}
-        </a>
-      );
+      return <a href={`mailto:${value}`} className="text-blue-600 hover:underline truncate max-w-[180px]">{value}</a>;
     }
-    
+
     if (type === 'phone') {
-      return (
-        <a
-          href={`tel:${value}`}
-          className="text-blue-600 hover:underline"
-        >
-          {value}
-        </a>
-      );
+      return <a href={`tel:${value}`} className="text-blue-600 hover:underline">{value}</a>;
     }
-    
-    return (
-      <span className="truncate max-w-[150px]">
-        {value}
-      </span>
-    );
+
+    return <span className="truncate max-w-[150px]">{value}</span>;
   };
 
   const columns = [
@@ -152,7 +131,7 @@ const OrderTable = ({ orders = [] }) => {
                     ) : (
                       <Copy className="h-4 w-4" />
                     )}
-                    
+
                     {/* Tooltip */}
                     <div className="absolute right-full mr-2 top-1/2 -translate-y-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10">
                       {copiedId === order._id ? 'Copied!' : 'Copy details'}
@@ -164,6 +143,7 @@ const OrderTable = ({ orders = [] }) => {
           })}
         </tbody>
       </table>
+
       {orders.length === 0 && (
         <div className="text-center py-12 text-gray-500">
           <div className="flex flex-col items-center">
