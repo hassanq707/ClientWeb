@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+import moment from 'moment-timezone';
+
 
 const vinorderSchema = new mongoose.Schema({
     fullname: {
@@ -26,11 +28,10 @@ const vinorderSchema = new mongoose.Schema({
         enum: ["pending", "confirmed", "failed"]
     },
     Date: {
-        type: Date,
-        default: Date.now
+        type: String,
+        default: () =>
+            moment().tz('Asia/Karachi').format('DD/MM/YYYY, hh:mm A')
     }
-
-
 })
 
 

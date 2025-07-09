@@ -7,26 +7,9 @@ const OrderTable = ({ orders = [] }) => {
   const formatDateTime = (dateTimeString) => {
     if (!dateTimeString) return { date: 'N/A', time: '' };
 
-    const optionsDate = {
-      timeZone: 'Asia/Karachi',
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric'
-    };
-
-    const optionsTime = {
-      timeZone: 'Asia/Karachi',
-      hour: '2-digit',
-      minute: '2-digit',
-      hour12: true
-    };
-
-    const date = new Intl.DateTimeFormat('en-GB', optionsDate).format(new Date(dateTimeString));
-    const time = new Intl.DateTimeFormat('en-US', optionsTime).format(new Date(dateTimeString));
-
+    const [date, time] = dateTimeString.split(',').map(s => s.trim());
     return { date, time };
   };
-
 
   const copyToClipboard = (text, id) => {
     navigator.clipboard.writeText(text);
