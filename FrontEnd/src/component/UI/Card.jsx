@@ -1,12 +1,13 @@
 import { motion } from 'framer-motion';
-import { FaCar, FaShip, FaTruck, FaCheck } from 'react-icons/fa';
+import { FaCar, FaTruck, FaCheck } from 'react-icons/fa';
+import { IoBoat } from "react-icons/io5";
 import { RiEBikeFill } from 'react-icons/ri';
 
 const vehicleIcons = {
   Bike: RiEBikeFill,
   Car: FaCar,
   Truck: FaTruck,
-  Ship: FaShip
+  Boat: IoBoat
 };
 
 const PackageCard = ({ 
