@@ -36,7 +36,7 @@ const CustomerForm = ({ customerInfo, setCustomerInfo, setStep, vehicleType, pri
       return false;
     }
 
-    // Phone number validation (basic)
+    // Phone number validation 
     if (customerInfo.phoneNumber.length < 8) {
       setSubmitStatus({
         success: false,

@@ -34,10 +34,10 @@ const PayPalPayment = ({ price, onSuccess, onClose }) => {
   try {
     const order = await actions.order.capture();
     onSuccess({
-      paymentId: order.id, // PayPal transaction ID
-      gateway: 'paypal', // Explicitly set gateway
-      amount: price, // Pass the amount
-      rawData: order // Full PayPal response
+      paymentId: order.id, 
+      gateway: 'paypal', 
+      amount: price, 
+      rawData: order
     });
     setPaid(true);
   } catch (err) {

@@ -29,10 +29,10 @@ const StripeForm = ({ price, onSuccess }) => {
       }
 
       onSuccess({
-        paymentId: paymentMethod.id, // Stripe payment method ID
-        gateway: 'stripe', // Explicitly set gateway
-        amount: price, // Pass the amount
-        rawData: paymentMethod // Full Stripe response
+        paymentId: paymentMethod.id, 
+        gateway: 'stripe', 
+        amount: price, 
+        rawData: paymentMethod
       });
 
     } catch (err) {
