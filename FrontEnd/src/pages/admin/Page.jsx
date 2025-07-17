@@ -84,14 +84,23 @@ const AdminDashboard = () => {
   }, [searchTerm, activeTab, orders, pendings]);
 
   useEffect(() => {
-    const results = payments.filter(payment =>
-      Object.values(payment).some(
-        value =>
-          value &&
-          value.toString().toLowerCase().includes(searchTerm.toLowerCase())
-      ))
-    setFilteredPayments(results);
-  }, [searchTerm, payments]);
+  const results = payments.filter(payment => {
+    const { paymentMethod, transactionId, amount, status, orderId } = payment;
+    const lowerSearch = searchTerm.toLowerCase();
+
+    return (
+      (paymentMethod && paymentMethod.toLowerCase().includes(lowerSearch)) ||
+      (transactionId && transactionId.toLowerCase().includes(lowerSearch)) ||
+      (amount && amount.toString().toLowerCase().includes(lowerSearch)) ||
+      (status && status.toLowerCase().includes(lowerSearch)) ||
+      (orderId?.fullname && orderId.fullname.toLowerCase().includes(lowerSearch)) ||
+      (orderId?.email && orderId.email.toLowerCase().includes(lowerSearch))
+    );
+  });
+
+  setFilteredPayments(results);
+}, [searchTerm, payments]);
+
 
   return (
     <>
