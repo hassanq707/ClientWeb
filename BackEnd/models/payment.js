@@ -16,12 +16,13 @@ const paymentSchema = new mongoose.Schema({
     required: true
   },
   amount: {
-    type: String,  // Keep as String if you prefer
+    type: String,  
     required: true
   },
   paidAt: {
-    type: Date,
-    default: Date.now
+          type: String,
+          default: () =>
+          moment().tz('Asia/Karachi').format('DD/MM/YYYY, hh:mm A')
   }
 });
 

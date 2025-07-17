@@ -119,3 +119,24 @@ export const getVinOrderCollection = async (req, res) => {
     }
 }
 
+export const getAllPayments = async (req, res) => {
+  try {
+    const payments = await Payment.find()
+      .populate({
+        path: 'orderId',
+        select: 'fullname paymentStatus'
+      });
+
+    return res.json({
+      success: true,
+      message: "Get All Payments Successfully",
+      payments
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+

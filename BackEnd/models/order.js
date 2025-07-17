@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 import moment from 'moment-timezone';
 
-
 const vinorderSchema = new mongoose.Schema({
     fullname: {
         type: String,
@@ -30,7 +29,7 @@ const vinorderSchema = new mongoose.Schema({
     Date: {
         type: String,
         default: () =>
-            moment().tz('Asia/Karachi').format('DD/MM/YYYY, hh:mm A')
+        moment().tz('Asia/Karachi').format('DD/MM/YYYY, hh:mm A')
     }
 })
 
