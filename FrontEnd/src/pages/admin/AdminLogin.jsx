@@ -6,11 +6,12 @@ const AdminLogin = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
-
   const handleLogin = (e) => {
     e.preventDefault();
+    const adminUser = import.meta.env.VITE_ADMIN_USER;
+    const adminPass = import.meta.env.VITE_ADMIN_PASS;
 
-    if (username === "FusionTech" && password === "SaadTech") {
+    if (username === adminUser && password === adminPass) {
       localStorage.setItem('isAdmin', 'true');
       navigate('/admin');
     } else {

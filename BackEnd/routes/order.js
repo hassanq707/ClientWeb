@@ -13,5 +13,4 @@ router.get("/admin" , getVinOrderCollection)
 router.get("/getpayments" , getAllPayments)
 
 
-
 export default router
