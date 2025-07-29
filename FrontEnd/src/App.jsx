@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import Navbar from './component/Navbar';
 import Footer from './section/Footer';
 import HeroSection from './section/Hero';
@@ -9,6 +9,7 @@ import AboutPage from './pages/about/Page';
 import ContactPage from './pages/contact/Page';
 import PackagePage from './pages/package/Page';
 import Admin from './pages/admin/Page';
+import AdminLogin from './pages/admin/AdminLogin';
 import NotFound from './pages/error/Page';
 
 function HomePage() {
@@ -19,6 +20,15 @@ function HomePage() {
       <Testimonials />
     </>
   );
+}
+
+function ProtectedAdminRoute({ children }) {
+  const isAdmin = localStorage.getItem('isAdmin') === 'true';
+  if (!isAdmin) {
+    alert('Please login as admin first.');
+    return <Navigate to="/admin/login" replace />;
+  }
+  return children;
 }
 
 function App() {
@@ -35,7 +45,17 @@ function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/package" element={<PackagePage />} />
-          <Route path="/admin" element={<Admin />} />
+
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route
+            path="/admin"
+            element={
+              <ProtectedAdminRoute>
+                <Admin />
+              </ProtectedAdminRoute>
+            }
+          />
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

@@ -31,19 +31,19 @@ const PayPalPayment = ({ price, onSuccess, onClose }) => {
   };
 
   const onApprove = async (data, actions) => {
-  try {
-    const order = await actions.order.capture();
-    onSuccess({
-      paymentId: order.id, 
-      gateway: 'paypal', 
-      amount: price, 
-      rawData: order
-    });
-    setPaid(true);
-  } catch (err) {
-    setError('Payment failed. Please try again.');
-  }
-};
+    try {
+      const order = await actions.order.capture();
+      onSuccess({
+        paymentId: order.id,
+        gateway: 'paypal',
+        amount: price,
+        rawData: order
+      });
+      setPaid(true);
+    } catch (err) {
+      setError('Payment failed. Please try again.');
+    }
+  };
 
   if (error) {
     return (
@@ -54,7 +54,13 @@ const PayPalPayment = ({ price, onSuccess, onClose }) => {
   }
 
   return (
-    <PayPalScriptProvider options={{ 'client-id': paypalClientId, currency: 'USD' }}>
+    <PayPalScriptProvider
+      options={{
+        'client-id': paypalClientId,
+        currency: 'USD',
+        'disable-funding': 'paylater'
+      }}
+    >
       <div className="p-4 border border-gray-300 rounded-md bg-gray-50">
         {paid ? (
           <div className="text-center text-green-600 font-medium">
