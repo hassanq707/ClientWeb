@@ -29,48 +29,64 @@ const AdminDashboard = () => {
   const url = import.meta.env.VITE_API_BASE_URL;
 
   useEffect(() => {
-    const loadData = async () => {
-      try {
-        setLoading(true);
-        const [ordersRes, paymentsRes] = await Promise.all([
-          axios.get(`${url}/orders/admin`),
-          axios.get(`${url}/orders/getpayments`)
-        ]);
+  const fetchOrders = async () => {
+    try {
+      setLoading(true);
+      const res = await axios.get(`${url}/orders/admin`);
 
-        if (ordersRes.data.success && paymentsRes.data.success) {
-          const allOrders = ordersRes.data.orders;
-          const confirmedOrders = allOrders.filter(obj => obj.paymentStatus === "confirmed");
-          const pendingOrders = allOrders.filter(obj => obj.paymentStatus !== "confirmed");
+      if (res.data.success) {
+        const allOrders = res.data.orders;
+        const confirmedOrders = allOrders.filter(obj => obj.paymentStatus === "confirmed");
+        const pendingOrders = allOrders.filter(obj => obj.paymentStatus !== "confirmed");
 
-          setOrders(confirmedOrders);
-          setPendings(pendingOrders);
-          setPayments(paymentsRes.data.payments);
+        setOrders(confirmedOrders);
+        setPendings(pendingOrders);
 
-          const totalRevenue = paymentsRes.data.payments
-            .filter(p => p.orderId?.paymentStatus === 'confirmed')
-            .reduce((sum, p) => {
-              const amount = parseFloat(p.amount); 
-              return sum + amount;
-            }, 0);
-
-
-          setStats({
-            totalOrders: allOrders.length,
-            totalRevenue,
-            pendingOrders: pendingOrders.length
-          });
-        } else {
-          setError('Failed to fetch data');
-        }
-      } catch (err) {
-        setError('Failed to fetch data');
-      } finally {
-        setLoading(false);
+        setStats(prev => ({
+          ...prev,
+          totalOrders: allOrders.length,
+          pendingOrders: pendingOrders.length,
+        }));
+      } else {
+        setError('Failed to fetch orders');
       }
-    };
+    } catch (err) {
+      setError('Error fetching orders');
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    loadData();
-  }, []);
+  const fetchPayments = async () => {
+    try {
+      const res = await axios.get(`${url}/orders/getpayments`);
+
+      if (res.data.success) {
+        setPayments(res.data.payments);
+
+        const totalRevenue = res.data.payments
+          .filter(p => p.orderId?.paymentStatus === 'confirmed')
+          .reduce((sum, p) => {
+            const amount = parseFloat(p.amount);
+            return sum + amount;
+          }, 0);
+
+        setStats(prev => ({
+          ...prev,
+          totalRevenue
+        }));
+      } else {
+        setError('Failed to fetch payments');
+      }
+    } catch (err) {
+      setError('Error fetching payments');
+    }
+  };
+
+  fetchOrders();
+  fetchPayments();
+}, []);
+
 
   useEffect(() => {
     const dataToFilter = activeTab === 'confirmed' ? orders : pendings;
