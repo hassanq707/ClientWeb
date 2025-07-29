@@ -1,10 +1,8 @@
 import { useState } from 'react';
 import PayPalPayment from './PaypalPayment';
 import axios from 'axios';
-import StripePayment from './StripePayment';
 
 const PaymentStep = ({ price, vehicleType, onClose, setStep }) => {
-  const [paymentMethod, setPaymentMethod] = useState('paypal');
 
   const handlePaymentSuccess = async (paymentData) => {
     try {
@@ -18,14 +16,14 @@ const PaymentStep = ({ price, vehicleType, onClose, setStep }) => {
         `${import.meta.env.VITE_API_BASE_URL}/orders/payment`,
         {
           orderId: orderData._id,
-          paymentMethod: paymentData.gateway,
+          paymentMethod: "Paypal",
           transactionId: paymentData.paymentId,
           amount: `${paymentData.amount.toFixed(2)}$`
         }
       );
       const updatedOrder = {
         ...response.data.order,
-        paymentMethod: paymentData.gateway,
+        paymentMethod: "Paypal",
       }
       localStorage.setItem('orderData', JSON.stringify(updatedOrder));
       setStep('success');
@@ -42,39 +40,12 @@ const PaymentStep = ({ price, vehicleType, onClose, setStep }) => {
         <p className="text-gray-600">Total: ${price?.toFixed(2)}</p>
       </div>
 
-      <div className="flex justify-center space-x-4">
-        <button
-          onClick={() => setPaymentMethod('paypal')}
-          className={`px-4 py-2 rounded-md font-medium transition-colors duration-200 ${paymentMethod === 'paypal'
-            ? 'bg-blue-600 text-white'
-            : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-            }`}
-        >
-          PayPal
-        </button>
-        <button
-          onClick={() => setPaymentMethod('stripe')}
-          className={`px-4 py-2 rounded-md font-medium transition-colors duration-200 ${paymentMethod === 'stripe'
-            ? 'bg-blue-600 text-white'
-            : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-            }`}
-        >
-          Stripe
-        </button>
-      </div>
 
       <div className="min-h-[300px]">
-        {paymentMethod === 'paypal' ? (
           <PayPalPayment
             price={price}
             onSuccess={handlePaymentSuccess}
           />
-        ) : (
-          <StripePayment
-            price={price}
-            onSuccess={handlePaymentSuccess}
-          />
-        )}
       </div>
     </div>
   );
