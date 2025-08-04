@@ -16,14 +16,14 @@ const PaymentStep = ({ price, vehicleType, onClose, setStep }) => {
         `${import.meta.env.VITE_API_BASE_URL}/orders/payment`,
         {
           orderId: orderData._id,
-          paymentMethod: "Paypal",
+          paymentMethod: "paypal",
           transactionId: paymentData.paymentId,
           amount: `${paymentData.amount.toFixed(2)}$`
         }
       );
       const updatedOrder = {
         ...response.data.order,
-        paymentMethod: "Paypal",
+        paymentMethod: "paypal",
       }
       localStorage.setItem('orderData', JSON.stringify(updatedOrder));
       setStep('success');
