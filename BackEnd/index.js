@@ -47,14 +47,7 @@ app.use('/orders', OrderRouter);
 
 // Test route
 app.get('/', async (req, res) => {
-  try {
-    await Order.deleteMany({});
-    await Payments.deleteMany({});
-    res.send("API is working... All Orders and Payments deleted.");
-  } catch (error) {
-    console.error("Error deleting data:", error);
-    res.status(500).send("Failed to delete data.");
-  }
+  res.send("API is working....");
 });
 
 // Server start
