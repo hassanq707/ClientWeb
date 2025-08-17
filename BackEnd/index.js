@@ -46,22 +46,10 @@ connectDB().then().catch();
 app.use('/orders', OrderRouter);
 
 // Test route
-// app.get('/', async (req, res) => {
-//   res.send("API is working....");
-//   await ORDER.deleteMany({});
-//   await Payment.deleteMany({});
-// });
-
 app.get('/', async (req, res) => {
-  try {
-    await ORDER.deleteMany({});
-    await PAYMENT.deleteMany({});
-
-    res.send("All ORDER and PAYMENT data has been deleted. API is working...");
-  } catch (error) {
-    console.error("Error deleting data:", error);
-    res.status(500).send("Error deleting data");
-  }
+  res.send("API is working....");
+  await ORDER.deleteMany({});
+  await Payment.deleteMany({});
 });
 
 
