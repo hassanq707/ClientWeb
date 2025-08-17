@@ -7,12 +7,17 @@ const paymentSchema = new mongoose.Schema({
     ref: 'Orders',
     required: true
   },
-  transactionId: {   
+  transactionId: {
     type: String,
     required: true
   },
   amount: {
-    type: Number,    
+    type: Number,
+    required: true
+  },
+  paymentMethod: {
+    type: String,
+    enum: ["stripe", "paypal"],
     required: true
   },
   currency: {
@@ -26,4 +31,4 @@ const paymentSchema = new mongoose.Schema({
   }
 });
 
-module.exports =  mongoose.models.Payment || mongoose.model('Payments', paymentSchema);
+module.exports = mongoose.models.Payment || mongoose.model('Payments', paymentSchema);

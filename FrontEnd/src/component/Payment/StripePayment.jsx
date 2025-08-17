@@ -31,7 +31,7 @@ const StripeForm = ({ price, clientSecret, onSuccess }) => {
       if (stripeError) throw stripeError;
 
       onSuccess({
-        paymentId: paymentIntent.id, 
+        paymentId: paymentIntent.id,
         amount: price,
       });
 
@@ -52,13 +52,22 @@ const StripeForm = ({ price, clientSecret, onSuccess }) => {
 
       <PaymentElement
         options={{
-          layout: {
-            type: 'tabs',
-            defaultCollapsed: false
+          layout: { type: 'tabs', defaultCollapsed: false },
+          defaultValues: {
+            billingDetails: {
+              phone: '',      
+              address: {
+                country: 'US'     
+              }
+            }
+          },
+          phoneNumberCollection: {
+            enabled: true
           }
         }}
         className="p-3 border border-gray-300 rounded-md"
       />
+
 
       <button
         type="submit"
@@ -90,3 +99,4 @@ const StripePayment = ({ price, clientSecret, onSuccess }) => (
 );
 
 export default StripePayment;
+

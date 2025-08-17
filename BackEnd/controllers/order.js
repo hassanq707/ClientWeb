@@ -1,9 +1,14 @@
 const ORDER = require("../models/order.js");
 const Payment = require("../models/payment.js");
 const mongoose = require('mongoose'); 
+
+// Stripe
 const Stripe = require('stripe');
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
+// Paypal
+const { client } = require('../config/paypal');
+const paypal = require('@paypal/checkout-server-sdk');
 
 const vinOrderCollection = async (req, res) => {
   try {
@@ -108,19 +113,21 @@ const getAllPayments = async (req, res) => {
 
 const confirmOrderPayment = async (req, res) => {
   try {
-    const { orderId, transactionId, amount} = req.body;
+    const { orderId, transactionId, amount, paymentMethod } = req.body;
+
     const payment = await Payment.create({
-      orderId,
+      orderId: new mongoose.Types.ObjectId(orderId),
       transactionId,
       amount: typeof amount === 'string' ? parseFloat(amount.replace('$', '')) : amount,
       currency: 'usd',
+      paymentMethod: paymentMethod || 'stripe' // Default to stripe if not provided
     });
 
-    // Update order status
     const updatedOrder = await ORDER.findByIdAndUpdate(
       orderId,
       {
         paymentStatus: "confirmed",
+        paymentMethod: paymentMethod || 'stripe'
       },
       { new: true }
     );
@@ -131,7 +138,6 @@ const confirmOrderPayment = async (req, res) => {
       order: updatedOrder,
       payment
     });
-
   } catch (error) {
     console.error("Payment confirmation error:", error);
     return res.status(500).json({
@@ -163,10 +169,66 @@ const createStripePaymentIntent = async (req, res) => {
   }
 };
 
+
+// Add this new endpoint for PayPal orders
+const createPayPalOrder = async (req, res) => {
+  try {
+    const { amount } = req.body;
+    
+    const request = new paypal.orders.OrdersCreateRequest();
+    request.prefer("return=representation");
+    request.requestBody({
+      intent: "CAPTURE",
+      purchase_units: [{
+        amount: {
+          currency_code: "USD",
+          value: amount.toFixed(2)
+        }
+      }]
+    });
+
+    const order = await client().execute(request);
+    res.json({ 
+      id: order.result.id,
+      status: order.result.status 
+    });
+    
+  } catch (error) {
+    console.error("PayPal order error:", error);
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// Add PayPal verification endpoint
+const verifyPayPalPayment = async (req, res) => {
+  try {
+    const { orderID } = req.body;
+    
+    const request = new paypal.orders.OrdersCaptureRequest(orderID);
+    request.requestBody({});
+
+    const capture = await client().execute(request);
+    
+    res.json({
+      success: true,
+      order: capture.result
+    });
+    
+  } catch (error) {
+    console.error("PayPal verification error:", error);
+    res.status(500).json({ 
+      success: false,
+      error: error.message 
+    });
+  }
+};
+
 module.exports = {
   createStripePaymentIntent,
+  createPayPalOrder, 
+  verifyPayPalPayment, 
   confirmOrderPayment,
   vinOrderCollection,
   getVinOrderCollection,
   getAllPayments
-}
+};

@@ -25,37 +25,44 @@ const PaymentTable = ({ payments = [] }) => {
   };
 
   const columns = [
-    {
-      key: 'paidAt',
-      name: 'Date',
-      icon: <Calendar className="h-4 w-4" />,
-      width: 'w-[180px]'
-    },
-    { 
-      key: 'customer', 
-      name: 'Customer', 
-      icon: <User className="h-4 w-4" />, 
-      width: 'w-[200px]' 
-    },
-    { 
-      key: 'orderId', 
-      name: 'Order ID', 
-      icon: <Mail className="h-4 w-4" />, 
-      width: 'w-[150px]' 
-    },
-    { 
-      key: 'amount', 
-      name: 'Amount', 
-      icon: <DollarSign className="h-4 w-4" />, 
-      width: 'w-[120px]' 
-    },
-    { 
-      key: 'transactionId', 
-      name: 'Transaction ID', 
-      icon: <CreditCard className="h-4 w-4" />, 
-      width: 'w-[220px]' 
-    },
-  ];
+  {
+    key: 'paidAt',
+    name: 'Date',
+    icon: <Calendar className="h-4 w-4" />,
+    width: 'w-[180px]'
+  },
+  { 
+    key: 'customer', 
+    name: 'Customer', 
+    icon: <User className="h-4 w-4" />, 
+    width: 'w-[200px]' 
+  },
+  { 
+    key: 'orderId', 
+    name: 'Order ID', 
+    icon: <Mail className="h-4 w-4" />, 
+    width: 'w-[150px]' 
+  },
+  { 
+    key: 'method', 
+    name: 'Method', 
+    icon: <CreditCard className="h-4 w-4" />, 
+    width: 'w-[120px]'
+  },
+  { 
+    key: 'amount', 
+    name: 'Amount', 
+    icon: <DollarSign className="h-4 w-4" />, 
+    width: 'w-[120px]' 
+  },
+  { 
+    key: 'transactionId', 
+    name: 'Transaction ID', 
+    icon: <CreditCard className="h-4 w-4" />, 
+    width: 'w-[220px]' 
+  },
+];
+
 
   return (
     <div className="overflow-x-auto">
@@ -100,6 +107,11 @@ const PaymentTable = ({ payments = [] }) => {
                 <td className="px-4 py-3 whitespace-nowrap">
                   <div className="text-sm text-gray-900 font-mono">
                     {payment.orderId?._id || 'N/A'}
+                  </div>
+                </td>
+                <td className="px-4 py-3 whitespace-nowrap">
+                  <div className="text-sm capitalize font-bold text-gray-900 font-mono">
+                    {payment.paymentMethod|| 'N/A'}
                   </div>
                 </td>
                 <td className="px-4 py-3 whitespace-nowrap">
