@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const PaymentStep = ({ price, setStep }) => {
   const [clientSecret, setClientSecret] = useState('');
-  const [paymentMethod, setPaymentMethod] = useState(''); // 'stripe' or 'paypal'
+  const [paymentMethod, setPaymentMethod] = useState('');
 
   useEffect(() => {
     if (paymentMethod === 'stripe') {
@@ -35,7 +35,7 @@ const PaymentStep = ({ price, setStep }) => {
           orderId: orderData._id,
           transactionId: paymentData.paymentId,
           amount: price,
-          paymentMethod: paymentMethod // Send the payment method
+          paymentMethod: paymentMethod 
         }
       );
 

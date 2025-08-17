@@ -120,7 +120,7 @@ const confirmOrderPayment = async (req, res) => {
       transactionId,
       amount: typeof amount === 'string' ? parseFloat(amount.replace('$', '')) : amount,
       currency: 'usd',
-      paymentMethod: paymentMethod || 'stripe' // Default to stripe if not provided
+      paymentMethod: paymentMethod || 'stripe' 
     });
 
     const updatedOrder = await ORDER.findByIdAndUpdate(
@@ -170,7 +170,6 @@ const createStripePaymentIntent = async (req, res) => {
 };
 
 
-// Add this new endpoint for PayPal orders
 const createPayPalOrder = async (req, res) => {
   try {
     const { amount } = req.body;
@@ -199,7 +198,7 @@ const createPayPalOrder = async (req, res) => {
   }
 };
 
-// Add PayPal verification endpoint
+// PayPal verification
 const verifyPayPalPayment = async (req, res) => {
   try {
     const { orderID } = req.body;

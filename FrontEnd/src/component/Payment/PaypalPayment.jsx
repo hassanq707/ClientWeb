@@ -23,7 +23,7 @@ const PayPalPayment = ({ price, onSuccess }) => {
 
   const onApprove = async (data, actions) => {
     try {
-      // Verify payment with backend
+      // Verify payment 
       const verification = await axios.post(
         `${import.meta.env.VITE_API_BASE_URL}/orders/verify-paypal`,
         { orderID: data.orderID }
