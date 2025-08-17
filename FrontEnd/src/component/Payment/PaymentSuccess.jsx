@@ -53,7 +53,7 @@ const PaymentSuccess = ({ vehicleType, price }) => {
         style={{ minHeight: 0 }} 
       >
         <div ref={slipRef}>
-          {/* Header */}
+
           <div className="text-center mb-4 pt-4">
             <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-3">
               <FaCheckCircle className="w-8 h-8 text-green-600" />
@@ -62,7 +62,6 @@ const PaymentSuccess = ({ vehicleType, price }) => {
             <p className="text-gray-600 mt-1">Your {vehicleType} report is being processed</p>
           </div>
 
-          {/* Order Summary */}
           <div className="border border-gray-200 rounded-lg overflow-hidden mb-4">
 
             <div className="flex justify-between bg-blue-50 px-4 py-2 border-b border-gray-200">
@@ -78,7 +77,7 @@ const PaymentSuccess = ({ vehicleType, price }) => {
                 </div>
               </div>
             </div>
-            {/* Order Details */}
+
             <div className="p-4 space-y-3">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                 <div className="min-w-0 break-words">
@@ -107,7 +106,6 @@ const PaymentSuccess = ({ vehicleType, price }) => {
                 <p className="font-medium break-all">{email || 'N/A'}</p>
               </div>
 
-              {/* Vehicle Details */}
               <div className="pt-3 border-t border-gray-200">
                 <h5 className="font-medium text-gray-900 text-sm mb-2">VEHICLE DETAILS</h5>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
@@ -164,3 +162,5 @@ const PaymentSuccess = ({ vehicleType, price }) => {
 };
 
 export default PaymentSuccess;
+
+

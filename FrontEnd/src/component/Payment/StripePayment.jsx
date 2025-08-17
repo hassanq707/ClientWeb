@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
-import { Elements, useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
+import { Elements, useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js';
 import { FaSpinner } from 'react-icons/fa';
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
-const StripeForm = ({ price, onSuccess }) => {
+const StripeForm = ({ price, clientSecret, onSuccess }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [processing, setProcessing] = useState(false);
@@ -19,20 +19,20 @@ const StripeForm = ({ price, onSuccess }) => {
     setError(null);
 
     try {
-      const { error: stripeError, paymentMethod } = await stripe.createPaymentMethod({
-        type: 'card',
-        card: elements.getElement(CardElement),
+      const { error: stripeError, paymentIntent } = await stripe.confirmPayment({
+        elements,
+        confirmParams: {
+          return_url: window.location.origin,
+        },
+        redirect: 'if_required'
       });
 
-      if (stripeError) {
-        throw stripeError;
-      }
+
+      if (stripeError) throw stripeError;
 
       onSuccess({
-        paymentId: paymentMethod.id, 
-        gateway: 'stripe', 
-        amount: price, 
-        rawData: paymentMethod
+        paymentId: paymentIntent.id, 
+        amount: price,
       });
 
     } catch (err) {
@@ -50,24 +50,15 @@ const StripeForm = ({ price, onSuccess }) => {
         </div>
       )}
 
-      <div className="space-y-3">
-        <label className="block text-sm font-medium text-gray-700">
-          Card Details
-        </label>
-        <CardElement
-          options={{
-            style: {
-              base: {
-                fontSize: '16px',
-                '::placeholder': {
-                  color: '#a0aec0',
-                },
-              },
-            }
-          }}
-          className="p-3 border border-gray-300 rounded-md"
-        />
-      </div>
+      <PaymentElement
+        options={{
+          layout: {
+            type: 'tabs',
+            defaultCollapsed: false
+          }
+        }}
+        className="p-3 border border-gray-300 rounded-md"
+      />
 
       <button
         type="submit"
@@ -88,9 +79,13 @@ const StripeForm = ({ price, onSuccess }) => {
   );
 };
 
-const StripePayment = ({ price, onSuccess }) => (
-  <Elements stripe={stripePromise}>
-    <StripeForm price={price} onSuccess={onSuccess} />
+const StripePayment = ({ price, clientSecret, onSuccess }) => (
+  <Elements stripe={stripePromise} options={{ clientSecret }}>
+    <StripeForm
+      price={price}
+      clientSecret={clientSecret}
+      onSuccess={onSuccess}
+    />
   </Elements>
 );
 

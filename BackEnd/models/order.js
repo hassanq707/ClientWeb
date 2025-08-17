@@ -1,5 +1,5 @@
-import mongoose from "mongoose";
-import moment from 'moment-timezone';
+const mongoose = require("mongoose");
+const moment = require('moment-timezone');
 
 const vinorderSchema = new mongoose.Schema({
     fullname: {
@@ -38,5 +38,5 @@ const vinorderSchema = new mongoose.Schema({
 const ORDER = mongoose.model("Orders", vinorderSchema)
 
 
-export default ORDER
+module.exports = ORDER
 

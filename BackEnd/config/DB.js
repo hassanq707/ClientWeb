@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose =  require("mongoose");
 
 const connectDB = async () => {
     try {
@@ -21,4 +21,4 @@ mongoose.connection.on("disconnected", () => {
     console.log("🟡 Mongoose disconnected from DB");
 });
 
-export default connectDB
+module.exports = connectDB

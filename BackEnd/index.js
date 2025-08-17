@@ -1,12 +1,11 @@
-import express from "express";
-import OrderRouter from "./routes/order.js";
-import cors from "cors";
-import dotenv from "dotenv";
-import connectDB from "./config/DB.js";
-import Order from './models/order.js'
-import Payments from './models/payment.js'
-
+const dotenv = require("dotenv");
 dotenv.config();
+
+const express = require("express");
+const OrderRouter = require("./routes/order.js");
+const cors = require("cors");
+const connectDB = require("./config/DB.js");
+
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -40,7 +39,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended : false}));
 
 // Connect to DB
-await connectDB();
+connectDB().then().catch();
 
 // Routes
 app.use('/orders', OrderRouter);

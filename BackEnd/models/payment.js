@@ -1,6 +1,5 @@
-import mongoose from 'mongoose';
-import moment from 'moment-timezone';
-
+const mongoose = require("mongoose");
+const moment = require('moment-timezone');
 
 const paymentSchema = new mongoose.Schema({
   orderId: {
@@ -8,24 +7,23 @@ const paymentSchema = new mongoose.Schema({
     ref: 'Orders',
     required: true
   },
-  paymentMethod: {
-    type: String,
-    enum: ['stripe', 'paypal'],
-    required: true
-  },
-  transactionId: {
+  transactionId: {   
     type: String,
     required: true
   },
   amount: {
-    type: String,  
+    type: Number,    
     required: true
   },
+  currency: {
+    type: String,
+    default: 'usd'
+  },
   paidAt: {
-          type: String,
-          default: () =>
-          moment().tz('Asia/Karachi').format('DD/MM/YYYY, hh:mm A')
+    type: String,
+    default: () =>
+      moment().tz('Asia/Karachi').format('DD/MM/YYYY, hh:mm A')
   }
 });
 
-export default mongoose.models.Payment || mongoose.model('Payments', paymentSchema);
+module.exports =  mongoose.models.Payment || mongoose.model('Payments', paymentSchema);

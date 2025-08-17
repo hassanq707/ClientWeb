@@ -26,6 +26,8 @@ const AdminDashboard = () => {
     pendingOrders: 0
   });
 
+  console.log(payments)
+
   const url = import.meta.env.VITE_API_BASE_URL;
 
   useEffect(() => {

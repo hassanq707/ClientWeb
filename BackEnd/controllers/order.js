@@ -1,8 +1,11 @@
-import ORDER from "../models/order.js";
-import Payment from "../models/payment.js";
+const ORDER = require("../models/order.js");
+const Payment = require("../models/payment.js");
+const mongoose = require('mongoose'); 
+const Stripe = require('stripe');
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 
-export const vinOrderCollection = async (req, res) => {
+const vinOrderCollection = async (req, res) => {
   try {
     const { fullname, email, phoneNumber, vinNumber, vehicleModel, year } = req.body;
 
@@ -40,7 +43,7 @@ export const vinOrderCollection = async (req, res) => {
           year,
           email,
           phoneNumber,
-          paymentStatus: "pending" // Set as pending for new orders too
+          paymentStatus: "pending" 
         });
       }
     } else {
@@ -64,21 +67,56 @@ export const vinOrderCollection = async (req, res) => {
 };
 
 
-// Confirm payment
-export const confirmOrderPayment = async (req, res) => {
-  try {
-    const { orderId, paymentMethod, transactionId, amount } = req.body;
+// All orders
+const getVinOrderCollection = async (req, res) => {
+    try {
+        const getOrder = await ORDER.find();
+        return res.json({
+            success: true,
+            message: "Get All Orders Successfully",
+            orders: getOrder
+        });
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+}
 
-    // 1. Create payment record
+const getAllPayments = async (req, res) => {
+  try {
+    const payments = await Payment.find()
+      .populate({
+        path: 'orderId',
+        select: 'fullname paymentStatus'
+      });
+
+    return res.json({
+      success: true,
+      message: "Get All Payments Successfully",
+      payments
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+
+const confirmOrderPayment = async (req, res) => {
+  try {
+    const { orderId, transactionId, amount} = req.body;
     const payment = await Payment.create({
       orderId,
-      paymentMethod,
       transactionId,
-      amount,
-      paidAt: new Date()
+      amount: typeof amount === 'string' ? parseFloat(amount.replace('$', '')) : amount,
+      currency: 'usd',
     });
 
-    // 2. Update order status
+    // Update order status
     const updatedOrder = await ORDER.findByIdAndUpdate(
       orderId,
       {
@@ -103,41 +141,32 @@ export const confirmOrderPayment = async (req, res) => {
   }
 };
 
-// For getting orders
-export const getVinOrderCollection = async (req, res) => {
-    try {
-        const getOrder = await ORDER.find();
-        return res.json({
-            success: true,
-            message: "Get All Orders Successfully",
-            orders: getOrder
-        });
-    } catch (error) {
-        return res.status(500).json({
-            success: false,
-            message: error.message
-        });
-    }
-}
-
-export const getAllPayments = async (req, res) => {
+// Create Payment Intent 
+const createStripePaymentIntent = async (req, res) => {
   try {
-    const payments = await Payment.find()
-      .populate({
-        path: 'orderId',
-        select: 'fullname paymentStatus'
-      });
+    const { amount } = req.body;
 
-    return res.json({
-      success: true,
-      message: "Get All Payments Successfully",
-      payments
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: Math.round(amount * 100), 
+      currency: 'usd',
+      automatic_payment_methods: { enabled: true },
+    });
+
+    res.json({ 
+      clientSecret: paymentIntent.client_secret,
+      paymentIntentId: paymentIntent.id 
     });
   } catch (error) {
-    return res.status(500).json({
-      success: false,
-      message: error.message
+    res.status(500).json({ 
+      error: error.message 
     });
   }
 };
 
+module.exports = {
+  createStripePaymentIntent,
+  confirmOrderPayment,
+  vinOrderCollection,
+  getVinOrderCollection,
+  getAllPayments
+}
