@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import {FaPaperPlane,FaMapMarkerAlt,FaPhone,FaEnvelope,FaClock,FaCheckCircle,FaTimesCircle,FaHeadset,FaShieldAlt,FaUser,FaMobileAlt,FaBolt,FaFileAlt} from 'react-icons/fa';
 import { motion } from 'framer-motion';
-import contactImage from '/contact.webp'
 import Card1 from '/Card1.webp'
 import Card2 from '/Card2.webp'
-import Card3 from '/Card3.jpg'
+import Card3 from '/Card3.webp'
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -85,7 +84,7 @@ const ContactPage = () => {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: `url(${contactImage})`,
+            backgroundImage: `url('./contact.webp')`,
             backgroundColor: '#3c5ea1' 
           }}
         ></div>

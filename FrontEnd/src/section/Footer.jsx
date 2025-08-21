@@ -107,7 +107,7 @@ const Footer = () => {
                 variants={itemVariants}
               >
                 Fusions
-                <span className="text-blue-600"> Car</span>
+                <span className="text-blue-700"> Car</span>
               </motion.h2>
             </motion.div>
             <motion.p
@@ -163,7 +163,7 @@ const Footer = () => {
                     transition={{ delay: i * 0.05 }}
                   >
                     <Link
-                      to={item.href}
+                      to={item.href || '/'}
                       className="text-gray-600 hover:text-blue-600 transition-colors duration-300 flex items-center gap-2 text-sm"
                     >
                       {item.name}

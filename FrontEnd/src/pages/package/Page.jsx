@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { packages } from '../../constant/Packages';
 import PackageCard from '../../component/UI/Card';
 import PaymentModal from '../../component/Payment/PaymentModal';
+import TrustBadges from '../../section/TrustBadges';
 
 const Packages = () => {
   const [modalState, setModalState] = useState({
@@ -84,6 +85,7 @@ const Packages = () => {
               <PackageCard
                 vehicleType={pkg.vehicleType}
                 price={pkg.price}
+                time= {pkg.DeliveryTime}
                 discount={pkg.discount}
                 features={pkg.features}
                 isPopular={pkg.popular}
@@ -104,6 +106,7 @@ const Packages = () => {
           />
         )}
       </AnimatePresence>
+      <TrustBadges />
     </div>
   );
 };

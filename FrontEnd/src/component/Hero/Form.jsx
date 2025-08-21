@@ -29,14 +29,14 @@ const FormSection = ({ formData, handleInputChange, handleSubmit }) => {
           <div className="relative z-10">
             <div className="text-center mb-6">
               <h2 className="text-3xl font-bold text-white mb-2">
-                Get Your <span className="text-blue-300">Report</span>
+                Get Your <span className="text-blue-400">Report</span>
               </h2>
               <p className="text-gray-300/80">Complete the form to receive instant results</p>
             </div>
 
             <div onSubmit={onSubmit}>
               <div className="space-y-4">
-                {/* Full Name */}
+
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-blue-300/90">
                     <User className="text-lg" />
@@ -53,7 +53,6 @@ const FormSection = ({ formData, handleInputChange, handleSubmit }) => {
                 </div>
 
 
-                {/* VIN/HIN */}
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-blue-300/90">
                     <Hash className="text-lg" />
@@ -108,7 +107,7 @@ const FormSection = ({ formData, handleInputChange, handleSubmit }) => {
                   disabled={isSubmitting}
                   onClick={onSubmit}
                   className={`
-                  w-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-600
+                  w-full bg-gradient-to-r from-blue-700 to-blue-600 hover:from-blue-600 hover:to-blue-700
                   text-white font-bold py-3 px-6 rounded-xl transition-all duration-300
                   shadow-lg hover:shadow-xl active:scale-[0.98]
                   flex items-center justify-center space-x-2
@@ -143,4 +142,6 @@ const FormSection = ({ formData, handleInputChange, handleSubmit }) => {
 };
 
 export default FormSection;
+
+
 

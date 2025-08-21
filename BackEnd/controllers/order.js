@@ -116,7 +116,7 @@ const confirmOrderPayment = async (req, res) => {
     const { orderId, transactionId, amount, paymentMethod } = req.body;
 
     const payment = await Payment.create({
-      orderId: new mongoose.Types.ObjectId(orderId),
+      orderId,
       transactionId,
       amount: typeof amount === 'string' ? parseFloat(amount.replace('$', '')) : amount,
       currency: 'usd',

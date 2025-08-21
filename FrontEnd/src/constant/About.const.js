@@ -87,20 +87,17 @@ export const COUNTRIES = [
     },
     {
       question: "What payment methods do you accept?",
-      answer: "We accept all major credit cards, PayPal, and in some countries, local payment methods like Mada (Saudi Arabia) and UPI (India)."
+      answer: "We accept all major credit cards and PayPal. In some countries, we also support local payment methods like Mada (Saudi Arabia)."
     },
     {
       question: "How long does it take to get a report?",
-      answer: "Reports are generated instantly after payment. You'll receive a PDF copy via email within 2-5 minutes."
+      answer: "Reports are delivered within 3–4 hours after payment. A PDF copy will be sent to your email."
     },
     {
       question: "Do you cover commercial vehicles?",
       answer: "Yes, we provide reports for both personal and commercial vehicles in all supported countries."
     },
-    {
-      question: "Can I get a refund if I'm not satisfied?",
-      answer: "We offer a 7-day money-back guarantee if the report doesn't meet your expectations."
-    }
+    
   ];
   
 

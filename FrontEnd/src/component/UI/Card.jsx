@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FaCar, FaTruck, FaCheck } from 'react-icons/fa';
+import { FaCar, FaTruck, FaCheck, FaClock } from 'react-icons/fa';
 import { IoBoat } from "react-icons/io5";
 import { RiEBikeFill } from 'react-icons/ri';
 
@@ -13,6 +13,7 @@ const vehicleIcons = {
 const PackageCard = ({ 
   vehicleType, 
   price, 
+  time, 
   discount, 
   features, 
   onGetReport,
@@ -41,7 +42,7 @@ const PackageCard = ({
       )}
       
       <motion.div
-        className={`h-full flex flex-col rounded-2xl overflow-hidden shadow-lg`}
+        className={`h-full flex flex-col rounded-2xl overflow-hidden shadow-lg border border-gray-100`}
         whileTap={{ scale: 0.98 }}
       >
         {/* Card Header */}
@@ -61,7 +62,7 @@ const PackageCard = ({
         
         {/* Price Section */}
         <motion.div 
-          className="px-4 sm:px-6 pt-5 pb-4 text-center"
+          className="px-4 sm:px-6 pt-5 pb-3 text-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
@@ -75,7 +76,12 @@ const PackageCard = ({
               </span>
             </div>
           </div>
-          <p className="mt-2 text-sm text-gray-500">One-time payment</p>
+          
+          {/* Delivery Time */}
+          <div className="mt-3 flex items-center justify-center text-sm text-gray-600 bg-blue-50 rounded-lg py-2 px-3">
+            <FaClock className="mr-2 text-blue-500" />
+            <span>Delivery in: <strong className="text-blue-600">{time}</strong></span>
+          </div>
         </motion.div>
         
         {/* Features List */}
@@ -96,13 +102,12 @@ const PackageCard = ({
           </ul>
         </div>
         
-        {/* CTA Button */}
         <div className="px-4 sm:px-6 pb-6 pt-3">
           <motion.button
             onClick={onGetReport}
             className={`w-full py-3 px-4 rounded-lg font-bold text-white text-sm sm:text-base ${
               isPopular ? 'bg-blue-600 hover:bg-blue-700' : 'bg-blue-500 hover:bg-blue-600'
-            } shadow-md`}
+            } shadow-md transition-colors duration-200`}
             whileHover={{ 
               scale: 1.05,
               boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)"
@@ -118,7 +123,3 @@ const PackageCard = ({
 };
 
 export default PackageCard;
-
-
-
-

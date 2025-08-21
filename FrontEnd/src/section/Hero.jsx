@@ -28,10 +28,10 @@ const HeroSection = () => {
   }, []);
 
   const images = [
-    { id: 1, src: '/car.jpg', alt: 'Car report' },
-    { id: 2, src: '/bike.jpg', alt: 'Bike report' },
-    { id: 3, src: '/truck.jpg', alt: 'Truck report' },
-    { id: 4, src: '/boat.jpg', alt: 'Ship report' },
+    { id: 1, src: '/car.webp', alt: 'Car report' },
+    { id: 2, src: '/bike.webp', alt: 'Bike report' },
+    { id: 3, src: '/truck.webp', alt: 'Truck report' },
+    { id: 4, src: '/boat.webp', alt: 'Ship report' },
   ];
 
   const handleInputChange = (e) => {

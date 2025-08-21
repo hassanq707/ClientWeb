@@ -1,7 +1,8 @@
 export const packages = [
     {
       vehicleType: 'Bike',
-      price: 49.99,  // Original price before 30% discount
+      price: 49.99,  
+      DeliveryTime : "3-4 Hours",
       discount: 30,
       features: [
         'Ship Overview',
@@ -12,11 +13,12 @@ export const packages = [
         'Salvage',
         'Theft Record'
       ],
-      finalPrice: 34.99  // Price after discount
+      finalPrice: 34.99  
     },
     {
       vehicleType: 'Car',
-      price: 69.99,  // Original price before 30% discount
+      price: 69.99,  
+      DeliveryTime : "3-4 Hours",
       discount: 30,
       features: [
         'Ship Overview',
@@ -27,11 +29,12 @@ export const packages = [
         'Salvage',
         'Theft Record'
       ],
-      finalPrice: 49.99  // Price after discount
+      finalPrice: 49.99  
     },
     {
       vehicleType: 'Truck',
-      price: 92.84,  // Original price before 30% discount
+      price: 92.84,  
+      DeliveryTime : "3-4 Hours",
       discount: 30,
       features: [
         'Ship Overview',
@@ -42,11 +45,12 @@ export const packages = [
         'Salvage',
         'Theft Record'
       ],
-      finalPrice: 64.99  // Price after discount
+      finalPrice: 64.99  
     },
     {
       vehicleType: 'Boat',
-      price: 142.84,  // Original price before 30% discount
+      price: 142.84,  
+      DeliveryTime : "3-4 Hours",
       discount: 30,
       features: [
         'Ship Overview',
@@ -57,7 +61,7 @@ export const packages = [
         'Salvage',
         'Theft Record'
       ],
-      finalPrice: 99.99  // Price after discount
+      finalPrice: 99.99 
     }
 ];
 

@@ -4,6 +4,8 @@ import Footer from './section/Footer';
 import HeroSection from './section/Hero';
 import Testimonials from './section/Testimonials';
 import TrustedWorldwide from './section/Trusted';
+import ServicesWeCover from './section/Services';
+
 
 import AboutPage from './pages/about/Page';
 import ContactPage from './pages/contact/Page';
@@ -11,13 +13,18 @@ import PackagePage from './pages/package/Page';
 import Admin from './pages/admin/Page';
 import AdminLogin from './pages/admin/AdminLogin';
 import NotFound from './pages/error/Page';
+import Process from './section/Process';
+import TrustBadges from './section/TrustBadges';
 
 function HomePage() {
   return (
     <>
       <HeroSection />
+      <ServicesWeCover />
+      <Process />
       <TrustedWorldwide />
       <Testimonials />
+      <TrustBadges />
     </>
   );
 }

@@ -1,4 +1,3 @@
-// TypeWriter.jsx
 import { useEffect, useState } from 'react';
 
 const TypeWriter = ({ words, currentIndex }) => {
@@ -43,3 +42,4 @@ const TypeWriter = ({ words, currentIndex }) => {
 };
 
 export default TypeWriter;
+

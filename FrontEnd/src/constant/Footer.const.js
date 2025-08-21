@@ -12,17 +12,17 @@ export const footerData = {
         ],
       },
       {
-        title: 'Our Services',
+        title: 'Services We Cover',
         items: [
-          { name: 'Car History Report', href: '/services/car' },
-          { name: 'Bike History Report', href: '/services/bike' },
-          { name: 'Truck History Report', href: '/services/truck' },
-          { name: 'Ship History Report', href: '/services/ship' },
+          { name: 'Car History Report' },
+          { name: 'Bike History Report' },
+          { name: 'Truck History Report' },
+          { name: 'Ship History Report' },
         ],
       },
     ],
     contact: {
-      data: "Have questions or need assistance with our Vehical History reports? We're here to help ",
+      data: "Have questions or need assistance with our Vehicle History reports? We're here to help ",
       email: 'info.fusionscar@gmail.com',
     },
     social: [
