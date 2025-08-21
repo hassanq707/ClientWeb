@@ -49,8 +49,7 @@ const StripeForm = ({ price, clientSecret, onSuccess }) => {
           {error}
         </div>
       )}
-
-      {/* <PaymentElement
+<PaymentElement
         options={{
           layout: { type: 'tabs', defaultCollapsed: false },
           defaultValues: {
@@ -66,9 +65,9 @@ const StripeForm = ({ price, clientSecret, onSuccess }) => {
           }
         }}
         className="p-3 border border-gray-300 rounded-md"
-      /> */}
-
-            <PaymentElement
+      /> 
+{/* 
+      <PaymentElement
         options={{
           layout: { type: 'tabs', defaultCollapsed: false },
           defaultValues: {
@@ -94,7 +93,7 @@ const StripeForm = ({ price, clientSecret, onSuccess }) => {
         }}
         className="p-3 border border-gray-300 rounded-md"
       />
-
+ */}
 
       <button
         type="submit"
