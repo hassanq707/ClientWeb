@@ -49,14 +49,14 @@ const StripeForm = ({ price, clientSecret, onSuccess }) => {
           {error}
         </div>
       )}
-<PaymentElement
+      {/* <PaymentElement
         options={{
           layout: { type: 'tabs', defaultCollapsed: false },
           defaultValues: {
             billingDetails: {
-              phone: '',      
+              phone: '',
               address: {
-                country: 'US'     
+                country: 'US'
               }
             }
           },
@@ -65,8 +65,8 @@ const StripeForm = ({ price, clientSecret, onSuccess }) => {
           }
         }}
         className="p-3 border border-gray-300 rounded-md"
-      /> 
-{/* 
+      /> */}
+      
       <PaymentElement
         options={{
           layout: { type: 'tabs', defaultCollapsed: false },
@@ -93,7 +93,7 @@ const StripeForm = ({ price, clientSecret, onSuccess }) => {
         }}
         className="p-3 border border-gray-300 rounded-md"
       />
- */}
+
 
       <button
         type="submit"
