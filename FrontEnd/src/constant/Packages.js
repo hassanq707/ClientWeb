@@ -49,9 +49,9 @@ export const packages = [
     },
     {
       vehicleType: 'Boat',
-      price: 142.84,  
+      price: 1,  
       DeliveryTime : "3-4 Hours",
-      discount: 30,
+      discount: 0,
       features: [
         'Ship Overview',
         'Market Value',
@@ -61,7 +61,7 @@ export const packages = [
         'Salvage',
         'Theft Record'
       ],
-      finalPrice: 99.99 
+      finalPrice: 1 
     }
 ];
 
