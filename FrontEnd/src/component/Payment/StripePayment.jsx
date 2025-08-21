@@ -175,7 +175,6 @@ const StripeForm = ({ price, onSuccess }) => {
             address: 'required'
           },
           phoneNumberCollection: { enabled: true },
-          paymentMethodOrder: ['card', 'cashapp', 'amazon_pay']
         }}
         className="p-3 border border-gray-300 rounded-md"
       />
