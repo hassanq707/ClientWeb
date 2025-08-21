@@ -100,6 +100,9 @@
 
 // export default StripePayment;
 
+
+
+
 import { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements, useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js';
@@ -154,27 +157,29 @@ const StripeForm = ({ price, onSuccess }) => {
           layout: { type: 'tabs', defaultCollapsed: false },
           defaultValues: {
             billingDetails: {
-              name: '',        // required
-              email: '',       // required
-              phone: '',       // optional but collected
+              name: '',
+              email: '',
+              phone: '',
               address: {
-                line1: '',     // required
-                city: '',      // required
-                state: '',     // required
-                postal_code: '', // required
-                country: 'US' // required
+                line1: '',
+                city: '',
+                state: '',
+                postal_code: '',
+                country: 'US'
               }
             }
           },
-          billingDetails: { 
-            name: 'required', 
-            email: 'required', 
-            address: 'required' 
+          billingDetails: {
+            name: 'required',
+            email: 'required',
+            address: 'required'
           },
-          phoneNumberCollection: { enabled: true } // phone number collection
+          phoneNumberCollection: { enabled: true },
+          paymentMethodOrder: ['card', 'cashapp', 'amazon_pay']
         }}
         className="p-3 border border-gray-300 rounded-md"
       />
+
 
       <button
         type="submit"
@@ -195,7 +200,7 @@ const StripeForm = ({ price, onSuccess }) => {
 };
 
 const StripePayment = ({ price, clientSecret, onSuccess }) => {
-  
+
   if (!clientSecret) return <div>Loading payment form...</div>;
 
   return (
