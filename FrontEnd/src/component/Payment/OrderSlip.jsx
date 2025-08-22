@@ -40,7 +40,6 @@ const OrderSlip = ({ vehicleType, price }) => {
       jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
     };
 
-    // Create a clone of the element to avoid affecting the original
     const clone = element.cloneNode(true);
     clone.style.width = `${element.offsetWidth}px`;
     clone.style.position = 'absolute';

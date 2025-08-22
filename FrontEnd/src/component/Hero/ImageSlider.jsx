@@ -28,7 +28,6 @@ const ImageSlider = ({ images, currentSlide, setCurrentSlide }) => {
         </div>
       ))}
       
-      {/* Slider Indicators */}
       <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20 flex space-x-3">
         {images.map((_, index) => (
           <button

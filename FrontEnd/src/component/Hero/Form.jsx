@@ -68,7 +68,6 @@ const FormSection = ({ formData, handleInputChange, handleSubmit }) => {
                   />
                 </div>
 
-                {/* Model and Year */}
                 <div className="grid grid-cols-2 gap-4">
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-blue-300/90">
@@ -101,7 +100,6 @@ const FormSection = ({ formData, handleInputChange, handleSubmit }) => {
                   </div>
                 </div>
 
-                {/* Submit Button */}
                 <button
                   type="submit"
                   disabled={isSubmitting}

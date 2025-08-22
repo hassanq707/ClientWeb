@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
 import {
-    FaLock, FaCcVisa, FaCcMastercard, FaCcAmex, FaCcDiscover, FaCcDinersClub, FaCcJcb, FaPaypal
+    FaLock, FaCcVisa, FaCcAmex, FaCcDiscover, FaCcDinersClub, FaCcJcb, FaPaypal
 } from 'react-icons/fa';
+
 
 const TrustBadges = () => {
     const paymentMethods = [
@@ -12,9 +13,17 @@ const TrustBadges = () => {
         },
         {
             name: 'MasterCard',
-            icon: <FaCcMastercard className="text-5xl text-[#EB001B]" />,
+            icon: (
+                <img
+                    src="./masterCard.png"
+                    alt="MasterCard"
+                    className="w-12 h-12 object-contain"
+                />
+            ),
             color: '#EB001B'
         },
+
+
         {
             name: 'American Express',
             icon: <FaCcAmex className="text-5xl text-[#006FCF]" />,
@@ -92,7 +101,7 @@ const TrustBadges = () => {
                             variants={itemVariants}
                             className="flex items-center justify-center bg-blue-50 rounded-md shadow-sm hover:shadow-md transition-shadow duration-300 p-1"
                             whileHover={{ scale: 1.05 }}
-                            >
+                        >
                             {method.icon}
                         </motion.div>
                     ))}

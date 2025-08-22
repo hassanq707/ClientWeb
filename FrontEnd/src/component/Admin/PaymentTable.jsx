@@ -87,7 +87,7 @@ const PaymentTable = ({ payments = [] }) => {
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">
-          {payments.map((payment) => {
+          {payments.reverse().map((payment) => {
             const { date, time } = formatDateTime(payment.paidAt);
             const copyText = `Payment Details:\nDate: ${date}, ${time}\nCustomer: ${payment.orderId?.fullname || 'N/A'}\n\nOrder ID: ${payment.orderId?._id || 'N/A'}\nAmount: $${payment.amount?.toFixed(2) || '0.00'}\nTransaction ID: ${payment.transactionId || 'N/A'}`;
 

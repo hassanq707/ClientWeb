@@ -26,7 +26,7 @@ const Tabs = ({ children, activeTab, setActiveTab }) => {
 };
 
 const Tab = ({ label, value, count }) => {
-  return null; // This is just a placeholder for props
+  return null; 
 };
 
 export { Tabs, Tab };

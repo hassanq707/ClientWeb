@@ -85,9 +85,9 @@ const StripeForm = ({ price, clientSecret, onSuccess }) => {
             }
           },
           billingDetails: {
-            name: 'required',
-            email: 'required',
-            address: 'required'
+            name: 'auto',
+            email: 'auto',
+            address: 'auto'
           },
           phoneNumberCollection: { enabled: true },
         }}

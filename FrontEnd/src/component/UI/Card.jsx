@@ -7,7 +7,7 @@ const vehicleIcons = {
   Bike: RiEBikeFill,
   Car: FaCar,
   Truck: FaTruck,
-  Boat: IoBoat
+  "Ship/Boat": IoBoat
 };
 
 const PackageCard = ({ 
@@ -45,7 +45,7 @@ const PackageCard = ({
         className={`h-full flex flex-col rounded-2xl overflow-hidden shadow-lg border border-gray-100`}
         whileTap={{ scale: 0.98 }}
       >
-        {/* Card Header */}
+        {/* Card */}
         <div className={`p-4 ${
           isPopular ? 'bg-gradient-to-r from-blue-600 to-blue-500' : 'bg-blue-500'
         } text-white text-center`}>
@@ -60,7 +60,7 @@ const PackageCard = ({
           <h3 className="text-xl sm:text-2xl font-bold">{vehicleType} Report</h3>
         </div>
         
-        {/* Price Section */}
+        {/* Price */}
         <motion.div 
           className="px-4 sm:px-6 pt-5 pb-3 text-center"
           initial={{ opacity: 0 }}
@@ -77,14 +77,14 @@ const PackageCard = ({
             </div>
           </div>
           
-          {/* Delivery Time */}
+          {/* Delivery */}
           <div className="mt-3 flex items-center justify-center text-sm text-gray-600 bg-blue-50 rounded-lg py-2 px-3">
             <FaClock className="mr-2 text-blue-500" />
             <span>Delivery in: <strong className="text-blue-600">{time}</strong></span>
           </div>
         </motion.div>
         
-        {/* Features List */}
+        {/* Features */}
         <div className="px-4 sm:px-6 py-3 flex-grow">
           <ul className="space-y-3">
             {features.map((feature, index) => (

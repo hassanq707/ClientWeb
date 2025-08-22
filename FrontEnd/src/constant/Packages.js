@@ -5,9 +5,9 @@ export const packages = [
       DeliveryTime : "3-4 Hours",
       discount: 30,
       features: [
-        'Ship Overview',
+        'Bike Overview',
         'Market Value',
-        'Ship Specifications',
+        'Bike Specifications',
         'Sales Listing',
         'Accident Records',
         'Salvage',
@@ -21,9 +21,9 @@ export const packages = [
       DeliveryTime : "3-4 Hours",
       discount: 30,
       features: [
-        'Ship Overview',
+        'Car Overview',
         'Market Value',
-        'Ship Specifications',
+        'Car Specifications',
         'Sales Listing',
         'Accident Records',
         'Salvage',
@@ -37,9 +37,9 @@ export const packages = [
       DeliveryTime : "3-4 Hours",
       discount: 30,
       features: [
-        'Ship Overview',
+        'Truck Overview',
         'Market Value',
-        'Ship Specifications',
+        'Truck Specifications',
         'Sales Listing',
         'Accident Records',
         'Salvage',
@@ -48,20 +48,20 @@ export const packages = [
       finalPrice: 64.99  
     },
     {
-      vehicleType: 'Boat',
-      price: 1,  
+      vehicleType: 'Ship/Boat',
+      price: 142.84,  
       DeliveryTime : "3-4 Hours",
-      discount: 0,
+      discount: 30,
       features: [
-        'Ship Overview',
+        'Ship/Boat Overview',
         'Market Value',
-        'Ship Specifications',
+        'Ship/Boat Specifications',
         'Sales Listing',
         'Accident Records',
         'Salvage',
         'Theft Record'
       ],
-      finalPrice: 1 
+      finalPrice: 99.99
     }
 ];
 

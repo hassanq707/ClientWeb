@@ -35,7 +35,7 @@ const PaymentModal = ({ show, onClose, vehicleType, price }) => {
   if (!show) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4 overflow-y-auto">
+    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 py-4  overflow-y-auto">
       <div className="bg-white rounded-xl shadow-2xl max-w-md w-full p-6 mx-4">
         <div className="flex justify-between items-center mb-6 ">
           <h3 className="text-2xl font-bold text-gray-800">

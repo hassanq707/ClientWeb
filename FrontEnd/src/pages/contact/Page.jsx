@@ -91,7 +91,7 @@ const ContactPage = () => {
 
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.4 }}
+          animate={{ opacity: 0.55 }}
           transition={{ duration: 1.5 }}
           className="absolute inset-0 bg-black"
         ></motion.div>
@@ -112,7 +112,7 @@ const ContactPage = () => {
                 transition={{ duration: 0.8, delay: 0.5 }}
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6 tracking-tight leading-tight"
               >
-                Contact <span className="text-blue-300">Our Team</span>
+                Contact <span className="text-blue-400">Our Team</span>
               </h1>
             </div>
 
@@ -217,7 +217,7 @@ const ContactPage = () => {
             <div
               className="bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden"
             >
-              <div className="bg-gradient-to-r from-blue-600 to-blue-800 px-6 py-4">
+              <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-4">
                 <h2 className="text-xl font-bold text-white flex items-center">
                   <FaPaperPlane className="mr-3 animate-bounce" />
                   Send Us a Message
@@ -338,7 +338,7 @@ const ContactPage = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center text-sm"
+                    className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center text-sm"
                   >
                     {isSubmitting ? (
                       <>
@@ -363,7 +363,7 @@ const ContactPage = () => {
             <div
               className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden"
             >
-              <div className="bg-gradient-to-r from-blue-600 to-blue-800 px-6 py-4">
+              <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-4">
                 <h3 className="text-2xl font-bold text-white">Contact Information</h3>
                 <p className="text-blue-100 text-sm mt-2">Available 24/7 for your queries and support.</p>
               </div>

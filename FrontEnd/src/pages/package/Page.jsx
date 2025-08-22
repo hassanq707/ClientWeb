@@ -25,6 +25,7 @@ const Packages = () => {
   };
 
   return (
+    <>
     <div className="bg-gradient-to-b from-blue-50 -mt-4 md:-mt-2 via-white to-gray-50 py-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <motion.div 
@@ -39,7 +40,7 @@ const Packages = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            Premium <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">Vehicle Reports</span>
+            Premium <span className="bg-gradient-to-r from-blue-600 to-blue-600 bg-clip-text text-transparent">Vehicle Reports</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
@@ -106,8 +107,10 @@ const Packages = () => {
           />
         )}
       </AnimatePresence>
-      <TrustBadges />
     </div>
+    <TrustBadges />
+    </>
+
   );
 };
 
