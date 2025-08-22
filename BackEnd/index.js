@@ -46,7 +46,6 @@ connectDB().then().catch();
 app.use('/orders', OrderRouter);
 
 // Test route
-
 app.get('/', async (req, res) => {
     res.send("Api is working.");
 });

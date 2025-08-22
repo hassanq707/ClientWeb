@@ -1,6 +1,7 @@
 const ORDER = require("../models/order.js");
 const Payment = require("../models/payment.js");
-const mongoose = require('mongoose'); 
+const moment = require('moment-timezone'); 
+
 
 // Stripe
 const Stripe = require('stripe');
@@ -113,14 +114,19 @@ const getAllPayments = async (req, res) => {
 
 const confirmOrderPayment = async (req, res) => {
   try {
-    const { orderId, transactionId, amount, paymentMethod } = req.body;
+    const { orderId, transactionId, amount, paymentMethod, stripeCreated } = req.body;
+
+    const paidAt = stripeCreated 
+      ? moment.unix(stripeCreated).tz("Asia/Karachi").format("DD/MM/YYYY, hh:mm A")
+      : moment().tz("Asia/Karachi").format("DD/MM/YYYY, hh:mm A");
 
     const payment = await Payment.create({
       orderId,
       transactionId,
       amount: typeof amount === 'string' ? parseFloat(amount.replace('$', '')) : amount,
       currency: 'usd',
-      paymentMethod: paymentMethod || 'stripe' 
+      paymentMethod: paymentMethod || 'stripe',
+      paidAt 
     });
 
     const updatedOrder = await ORDER.findByIdAndUpdate(

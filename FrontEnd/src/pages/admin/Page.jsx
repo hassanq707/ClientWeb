@@ -26,7 +26,6 @@ const AdminDashboard = () => {
     pendingOrders: 0
   });
 
-  console.log(payments)
 
   const url = import.meta.env.VITE_API_BASE_URL;
 
@@ -127,7 +126,7 @@ const AdminDashboard = () => {
         <meta name="description" content="Admin panel for managing vehicle reports and payments" />
       </Helmet>
 
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200">
+      <div className="min-h-screen  bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200">
         <div className="container mx-auto px-4 sm:px-6 py-8">
           <header className="mb-8 bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-sm border border-gray-200/50">
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
@@ -192,16 +191,16 @@ const AdminDashboard = () => {
             <div className="flex border-b border-gray-200/50">
               <button
                 onClick={() => setActiveSection('orders')}
-                className={`px-6 py-4 font-medium flex items-center ${activeSection === 'orders' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500 hover:text-gray-700'}`}
+                className={`px-4 sm:px-6 py-4 text-[12px] sm:text-[13px] md:text-base font-medium flex items-center ${activeSection === 'orders' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500 hover:text-gray-700'}`}
               >
-                <FiTruck className="mr-2" />
+                <FiTruck className="mr-2 md:mr-3 text-sm md:text-lg" />
                 Vehicle Reports
               </button>
               <button
                 onClick={() => setActiveSection('payments')}
-                className={`px-6 py-4 font-medium flex items-center ${activeSection === 'payments' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500 hover:text-gray-700'}`}
+                className={`px-4 sm:px-6 py-4 text-[12px] sm:text-[13px] md:text-base font-medium flex items-center ${activeSection === 'payments' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500 hover:text-gray-700'}`}
               >
-                <FiCreditCard className="mr-2" />
+                <FiCreditCard className="mr-2 md:mr-3 text-sm md:text-lg" />
                 Payment Records
               </button>
             </div>
@@ -231,12 +230,12 @@ const AdminDashboard = () => {
             ) : (
               <>
                 <div className="px-6 py-4 border-b border-gray-200/50 flex justify-between items-center bg-gradient-to-r from-green-600/10 to-green-800/10">
-                  <h2 className="text-xl font-semibold text-gray-800 flex items-center">
-                    <IoMdCash className="mr-2 text-green-600" />
+                  <h2 className="text-sm sm:text-base lg:text-xl font-semibold text-gray-800 flex items-center">
+                    <IoMdCash className="mr-2 text-green-600 " />
                     Payment Records
                   </h2>
                   <div className="flex items-center space-x-3">
-                    <span className="bg-green-600/10 text-green-700 px-3 py-1 rounded-full text-sm font-medium border border-green-600/20">
+                    <span className="bg-green-600/10 text-green-700 px-3 py-1 rounded-full text-xs sm:text-sm lg:text-md font-medium border border-green-600/20">
                       {filteredPayments.length} {filteredPayments.length === 1 ? 'payment' : 'payments'}
                     </span>
                   </div>

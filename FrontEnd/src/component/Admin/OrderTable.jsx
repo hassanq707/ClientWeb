@@ -77,7 +77,7 @@ const OrderTable = ({ orders = [] }) => {
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">
-          {orders.reverse().map((order) => {
+          {[...orders].reverse().map((order) => {
             const { date, time } = formatDateTime(order.Date);
             const copyText = `Order Details:\n\nDate: ${date}\nTime: ${time}\nName: ${order.fullname || 'N/A'}\nEmail: ${order.email || 'N/A'}\nPhone: ${order.phoneNumber || 'N/A'}\nVIN: ${order.vinNumber || 'N/A'}\nModel: ${order.vehicleModel || 'N/A'}\nYear: ${order.year || 'N/A'}`;
 

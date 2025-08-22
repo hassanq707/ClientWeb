@@ -65,7 +65,7 @@ const PaymentTable = ({ payments = [] }) => {
 
 
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto border-4">
       <table className="min-w-full divide-y divide-gray-200">
         <thead className="bg-gray-50">
           <tr>
@@ -87,7 +87,7 @@ const PaymentTable = ({ payments = [] }) => {
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">
-          {payments.reverse().map((payment) => {
+          {[...payments].reverse().map((payment) => {
             const { date, time } = formatDateTime(payment.paidAt);
             const copyText = `Payment Details:\nDate: ${date}, ${time}\nCustomer: ${payment.orderId?.fullname || 'N/A'}\n\nOrder ID: ${payment.orderId?._id || 'N/A'}\nAmount: $${payment.amount?.toFixed(2) || '0.00'}\nTransaction ID: ${payment.transactionId || 'N/A'}`;
 
@@ -95,8 +95,8 @@ const PaymentTable = ({ payments = [] }) => {
               <tr key={payment._id} className="hover:bg-gray-50 group">
                 <td className="px-4 py-3 whitespace-nowrap">
                   <div className="flex flex-col">
-                    <span className="font-medium">{date}</span>
-                    <span className="text-xs text-gray-500">{time}</span>
+                    <span className="text-sm font-medium">{date}</span>
+                    <span className="text-xs text-gray-500 ">{time}</span>
                   </div>
                 </td>
                 <td className="px-4 py-3">

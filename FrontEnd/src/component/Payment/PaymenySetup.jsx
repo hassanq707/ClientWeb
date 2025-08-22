@@ -148,7 +148,8 @@ const PaymentStep = ({ price, setStep }) => {
           orderId: orderData._id,
           transactionId: paymentData.paymentId,
           amount: price,
-          paymentMethod: "stripe" 
+          paymentMethod: "stripe",
+          stripeCreated: paymentData.stripeCreated  
         }
       );
 
