@@ -17,7 +17,7 @@ const allowedOrigins = [
   'http://localhost:5173',
   'https://fusion-test-sigma.vercel.app',
   'http://fusionscar.com',
-  'https://fusionscar.com' 
+  'https://fusionscar.com'
 ];
 
 
@@ -37,7 +37,7 @@ const corsOptions = {
 // Middleware
 app.use(cors(corsOptions));
 app.use(express.json());
-app.use(express.urlencoded({extended : false}));
+app.use(express.urlencoded({ extended: false }));
 
 // Connect to DB
 connectDB().then().catch();
@@ -46,8 +46,16 @@ connectDB().then().catch();
 app.use('/orders', OrderRouter);
 
 // Test route
+
 app.get('/', async (req, res) => {
-  res.send("API is working....");
+  try {
+    await ORDER.deleteMany({});
+    await PAYMENT.deleteMany({});
+    res.send("All orders and payments have been deleted successfully.");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error deleting data.");
+  }
 });
 
 
